@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:claimflow;MODE=MySQL;DB_CLOSE_DELAY=-1
+    username: sa
+    password: ''
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,prometheus
+claimflow:
+  jwt-secret: ${CLAIMFLOW_JWT_SECRET:local-demo-secret-change-before-sharing}
+  token-seconds: 3600
+  demo-password: ${CLAIMFLOW_DEMO_PASSWORD:local-only}
+server:
+  address: 127.0.0.1
