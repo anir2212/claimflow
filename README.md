@@ -13,7 +13,7 @@ Expense claims become difficult when the same receipt arrives twice, a backgroun
 | Claim workflow | Employee, manager and finance routes; fixture JWT roles; database audit history | How should company identity and permissions replace the demo login? |
 | Receipt processing | Idempotent submission, duplicate guard, database-backed text job, retries and correction queue | How accurate is actual image OCR on a separately labeled receipt set? |
 | Receipt image seam and benchmark contract | `POST /api/claims/image` validates PNG/JPEG bytes and passes OCR text through the existing job, parser, amount, duplicate and correction rules behind an `OcrAdapter` interface. A labelled-receipt manifest validator and field-accuracy scorer (`dev.claimflow.benchmark`) are tested on a synthetic fixture | No OCR engine is bundled (the endpoint returns 503), so no OCR accuracy is measured. The next step is an authorized, human-labelled receipt set and a real adapter scored on it |
-| Review and operations | Local Chrome role flows, generated OpenAPI contract and job-state metrics endpoint | How will remote CI, accessibility and monitoring be checked? |
+| Review and operations | Local Chrome role flows, generated OpenAPI contract and job-state metrics endpoint. GitHub Actions runs the backend, frontend and browser jobs on every pull request | How will accessibility and monitoring be checked? |
 
 ## Run locally
 
