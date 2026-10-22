@@ -37,7 +37,8 @@ jobs:
       - run: npm test
       - run: npm run build
   browser-e2e:
-    runs-on: ubuntu-latest
+    # Pinned: the locked Playwright release cannot install Chromium on ubuntu-latest (26.04).
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
