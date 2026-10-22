@@ -1,11 +1,13 @@
 package dev.claimflow;
 
+import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
 
 import jakarta.validation.Valid;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +16,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
@@ -23,12 +28,14 @@ public class ClaimController {
     private final ClaimService service;
     private final ClaimSubmissionCoordinator submissions;
     private final PolicyService policy;
+    private final ReceiptImageIntake images;
 
     public ClaimController(ClaimService service, ClaimSubmissionCoordinator submissions,
-                           PolicyService policy) {
+                           PolicyService policy, ReceiptImageIntake images) {
         this.service = service;
         this.submissions = submissions;
         this.policy = policy;
+        this.images = images;
     }
 
     @PostMapping
@@ -43,6 +50,17 @@ public class ClaimController {
     public Claim submitAsync(@RequestHeader("Idempotency-Key") String key,
                              @Valid @RequestBody ClaimService.Submit input, Principal principal) {
         return submissions.submit(principal.getName(), key, input, true);
+    }
+
+    /** OCR seam: the image's text is queued through the same async rules as typed text. */
+    @PostMapping(path = "/image", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public Claim submitImage(@RequestHeader("Idempotency-Key") String key,
+                             @RequestParam String category, @RequestParam long amountCents,
+                             @RequestPart("receipt") MultipartFile receipt,
+                             Principal principal) throws IOException {
+        return images.submit(principal.getName(), key, category, amountCents, receipt.getBytes(),
+            receipt.getContentType());
     }
 
     public record ReceiptCheck(String receiptText) {}

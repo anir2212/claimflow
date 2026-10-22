@@ -1,0 +1,11 @@
+receipt_id,image_path,merchant,date,total_cents,currency,split,group_id,source,authorization,synthetic,redaction,retain_until
+syn-train-001,synthetic/train-001.png,Synthetic Noodle Bar,2026-09-01,1250,SGD,train,syn-noodle-bar,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-train-002,synthetic/train-002.png,Synthetic Taxi Co,2026-09-02,2380,SGD,train,syn-taxi-co,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-001,synthetic/dev-001.png,Synthetic Rice House,2026-09-05,1100,SGD,development,syn-rice-house,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-002,synthetic/dev-002.png,Synthetic Kopi House,2026-09-06,450,SGD,development,syn-kopi-house,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-003,synthetic/dev-003.png,Synthetic Laksa Stall,2026-09-07,1350,SGD,development,syn-laksa-stall,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-004,synthetic/dev-004.jpg,Synthetic Book Shop,2026-09-08,2999,SGD,development,syn-book-shop,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-005,synthetic/dev-005.png,Synthetic Juice Bar,2026-09-08,620,SGD,development,syn-juice-bar,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-dev-006,synthetic/dev-006.png,Synthetic Hotel Lobby,2026-09-09,18000,SGD,development,syn-hotel-lobby,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-test-001,synthetic/test-001.png,Synthetic Dim Sum Hall,2026-09-10,4210,SGD,test,syn-dim-sum-hall,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31
+syn-test-002,synthetic/test-002.png,"Synthetic Florist, Level 2",2026-09-11,3500,SGD,test,syn-florist,synthetic-fixture-generator,synthetic-fixture:no-real-receipt,true,NOT_REQUIRED,2099-12-31

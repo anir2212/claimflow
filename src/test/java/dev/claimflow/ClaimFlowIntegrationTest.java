@@ -255,6 +255,20 @@ class ClaimFlowIntegrationTest {
     }
 
     @Test
+    void imageEndpointWithoutConfiguredOcrReturns503AndKeepsTextPath() throws Exception {
+        String employee = token("employee");
+        String key = "image-unconfigured-" + java.util.UUID.randomUUID();
+        mvc.perform(org.springframework.test.web.servlet.request.MockMvcRequestBuilders.multipart("/api/claims/image")
+                .file(new org.springframework.mock.web.MockMultipartFile("receipt", "receipt.png", "image/png",
+                    SyntheticReceiptImages.png(key)))
+                .param("category", "meal").param("amountCents", "1000")
+                .header("Authorization", employee).header("Idempotency-Key", key))
+            .andExpect(status().isServiceUnavailable())
+            .andExpect(jsonPath("$.error", is("Image OCR is not configured on this server")));
+        org.junit.jupiter.api.Assertions.assertFalse(claimRepository.findByIdempotencyKey(key).isPresent());
+    }
+
+    @Test
     void receiptHashHasDatabaseConstraintBeyondServiceCheck() {
         ReceiptParser.Parsed parsed = new ReceiptParser().parse(
             "Merchant: Unique Cafe\nDate: 2026-10-08\nTotal: SGD 13.25");

@@ -1,5 +1,14 @@
 # ClaimFlow measured results
 
+## Receipt image seam and benchmark contract, 20 October 2026
+
+`./mvnw -q verify` with JDK 21.0.12.1 passed **70 tests, 0 failures, 0 errors, 0 skipped**, up from 56, including the JaCoCo service coverage gate. The new tests are:
+- **Image validation.** PNG/JPEG detection by content, SHA-256 of the exact bytes, and rejection of empty, oversized, non-image and mislabelled uploads. OCR text normalization keeps field values unchanged.
+- **Image path through the existing rules.** OCR text is queued through the existing job and audited. A repeated idempotency key replays without a second OCR call, and reuse with different input is rejected. An OCR total that disagrees with the claimed amount goes to manager correction, not review. A second image or typed text with the same receipt is caught as a duplicate. Malformed images and OCR failures create no claim. Without a configured engine, the endpoint returns 503 and the text path still works.
+- **Benchmark contract.** A synthetic manifest validates. The validator rejects split leakage by group and merchant, missing provenance or authorization, expired retention, unsafe image paths and bad labels. A development scoring run through the production parser and amount rule matches hand-computed counts. Missing predictions count as wrong, and cross-split or unknown rows are rejected. The command line validates, scores and warns when receipts are synthetic.
+
+**No OCR metric is reported.** The ten-row manifest describes invented receipts. Its "images" are 8×8 pixel patterns generated at test time, and the scores exist only to check the harness arithmetic. No OCR engine was added or run, and no real receipt was used. Accuracy and correction rate need an authorized, redacted, human-labelled receipt set.
+
 ## Frontend dependency audit, 16 October 2026
 
 An online `npm audit` of the previously pinned frontend tree identified four advisories: Vite (high), Vitest (critical), and transitive `@vitest/mocker` (moderate) and `tinypool` (critical). Updated Vite to 6.4.4 and Vitest to 5.0.5, which npm identifies as fixed releases. Vitest 5 initially picked up the separate Playwright `e2e/roles.spec.ts` file; `vite.config.ts` now limits unit-test discovery to `src/**/*.test.{ts,tsx}`. The final `npm audit --audit-level=moderate` reported **0 vulnerabilities**; `npm test` passed **2/2** unit tests and `npm run build` passed. A sandboxed browser attempt could not start a loopback web server; with approved loopback access, `npm run test:e2e -- --reporter=line` passed **2/2 Chrome flows in 24.0 seconds** against the packaged H2 API and Vite. Playwright terminated both web servers afterward. These are local checks and a point-in-time registry advisory result, not remote CI or production security evidence.

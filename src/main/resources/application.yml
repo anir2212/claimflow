@@ -9,6 +9,10 @@ spring:
     open-in-view: false
   flyway:
     enabled: true
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
 management:
   endpoints:
     web:
@@ -18,5 +22,7 @@ claimflow:
   jwt-secret: ${CLAIMFLOW_JWT_SECRET:local-demo-secret-change-before-sharing}
   token-seconds: 3600
   demo-password: ${CLAIMFLOW_DEMO_PASSWORD:local-only}
+  receipt-image:
+    max-bytes: 5242880
 server:
   address: 127.0.0.1
