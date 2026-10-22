@@ -4,7 +4,7 @@ ClaimFlow follows an expense claim from employee submission to manager review an
 
 ## Why this project
 
-Expense claims become difficult when the same receipt arrives twice, a background job stops, or a reviewer needs to explain a decision later. The project makes those cases visible and recoverable in a local system. Its current receipt input is a text transcription, which keeps the workflow testable while image reading remains open.
+Expense claims become difficult when the same receipt arrives twice, a background job stops, or a reviewer needs to explain a decision later. The project makes those cases visible and recoverable in a local system. Its working receipt input is a text transcription. An image endpoint now feeds OCR text through the same rules, but no OCR engine is bundled, so image reading itself remains open.
 
 ## Current milestones
 
@@ -12,6 +12,7 @@ Expense claims become difficult when the same receipt arrives twice, a backgroun
 |---|---|---|
 | Claim workflow | Employee, manager and finance routes; fixture JWT roles; database audit history | How should company identity and permissions replace the demo login? |
 | Receipt processing | Idempotent submission, duplicate guard, database-backed text job, retries and correction queue | How accurate is actual image OCR on a separately labeled receipt set? |
+| Receipt image seam and benchmark contract | `POST /api/claims/image` validates PNG/JPEG bytes and passes OCR text through the existing job, parser, amount, duplicate and correction rules behind an `OcrAdapter` interface. A labelled-receipt manifest validator and field-accuracy scorer (`dev.claimflow.benchmark`) are tested on a synthetic fixture | No OCR engine is bundled (the endpoint returns 503), so no OCR accuracy is measured. The next step is an authorized, human-labelled receipt set and a real adapter scored on it |
 | Review and operations | Local Chrome role flows, generated OpenAPI contract and job-state metrics endpoint | How will remote CI, accessibility and monitoring be checked? |
 
 ## Run locally
@@ -26,7 +27,7 @@ npm test
 npm run build
 ```
 
-Start the API with `./mvnw spring-boot:run` and, in a second terminal, run `cd frontend && npm run dev` to use the local console. The backend exposes OpenAPI at `/v3/api-docs` and a Prometheus-format job count at `/actuator/prometheus`; no monitoring server is bundled. The frontend also has a Chrome end-to-end suite (`npm run test:e2e`). The recorded local checks include 56 passing Maven tests, two Chrome role flows and one bounded MySQL job-recovery run; [results](RESULTS.md) gives their dates and limits.
+Start the API with `./mvnw spring-boot:run` and, in a second terminal, run `cd frontend && npm run dev` to use the local console. The backend exposes OpenAPI at `/v3/api-docs` and a Prometheus-format job count at `/actuator/prometheus`; no monitoring server is bundled. The frontend also has a Chrome end-to-end suite (`npm run test:e2e`). The recorded local checks include 70 passing Maven tests (20 October), two Chrome role flows and one bounded MySQL job-recovery run; [results](RESULTS.md) gives their dates and limits.
 
 ## Repository map
 
@@ -34,4 +35,4 @@ Start the API with `./mvnw spring-boot:run` and, in a second terminal, run `cd f
 
 ## Scope
 
-Receipt extraction reads text supplied by the user; image OCR and production identity are outside the current implementation. The async worker uses a database-backed queue, and the default H2 database loses its contents on restart. The MySQL profile supports the bounded persistence checks in [results](RESULTS.md). Demo users and keys are for loopback-only use.
+Receipt extraction reads text supplied by the user. The image endpoint has no OCR engine behind it, and production identity is outside the current implementation. The async worker uses a database-backed queue, and the default H2 database loses its contents on restart. The MySQL profile supports the bounded persistence checks in [results](RESULTS.md). Demo users and keys are for loopback-only use.

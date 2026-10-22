@@ -68,51 +68,85 @@ public class ClaimService {
     @Transactional
     public Claim submitAsync(String employee, String key, Submit input) {
         validateKey(key);
-        if (input.receiptText() == null || input.receiptText().isBlank() ||
-            input.receiptText().length() > 10000) {
+        requireAsyncText(input.receiptText());
+        return queue(employee, key, input, hash(input.receiptText()), "Async text extraction queued");
+    }
+
+    /**
+     * Queues OCR text through the same job, parser, amount, duplicate and correction path as typed
+     * text. Replay identity is the SHA-256 of the image bytes, so a retry does not depend on OCR
+     * returning identical text.
+     */
+    @Transactional
+    public Claim submitOcrAsync(String employee, String key, Submit input, String imageHash, String engine) {
+        validateKey(key);
+        requireAsyncText(input.receiptText());
+        String source = engine == null || engine.isBlank() ? "unnamed" : engine.strip();
+        return queue(employee, key, input, imageHash,
+            "Image OCR text queued (" + source.substring(0, Math.min(60, source.length())) + ")");
+    }
+
+    private void requireAsyncText(String text) {
+        if (text == null || text.isBlank() || text.length() > 10000) {
             throw new IllegalArgumentException("Async receipt text is required (max 10000 characters)");
         }
-        String inputHash = hash(input.receiptText());
-        var existing = claims.findByIdempotencyKey(key);
-        if (existing.isPresent()) {
-            return replay(employee, key, input, true);
+    }
+
+    private Claim queue(String employee, String key, Submit input, String inputHash, String detail) {
+        if (claims.findByIdempotencyKey(key).isPresent()) {
+            return replayAsync(employee, key, input.category(), input.amountCents(), inputHash);
         }
         Claim claim = new Claim(employee, input.category(), input.amountCents(),
             null, null, null, key);
         claim.move(ClaimState.SUBMITTED);
         claims.save(claim);
         jobs.save(new ExtractionJob(claim.getId(), input.receiptText(), inputHash));
-        events.save(new AuditEvent(claim.getId(), employee, "SUBMITTED", "Async text extraction queued"));
+        events.save(new AuditEvent(claim.getId(), employee, "SUBMITTED", detail));
         return claim;
     }
 
     @Transactional(readOnly = true)
     public Claim replay(String employee, String key, Submit input, boolean async) {
+        if (async) {
+            String inputHash = input.receiptText() == null ? null : hash(input.receiptText());
+            return replayAsync(employee, key, input.category(), input.amountCents(), inputHash);
+        }
         validateKey(key);
         Claim prior = claims.findByIdempotencyKey(key).orElse(null);
         if (prior == null) return null;
-        if (!prior.getEmployeeId().equals(employee) ||
-            !prior.getCategory().equals(input.category()) ||
-            prior.getAmountCents() != input.amountCents()) {
+        requireSameClaim(prior, employee, input.category(), input.amountCents());
+        if (jobs.existsById(prior.getId())) {
+            throw new IllegalArgumentException("Idempotency key reused with an async claim");
+        }
+        ReceiptParser.Parsed receipt = input.receiptText() == null || input.receiptText().isBlank()
+            ? null : parser.parse(input.receiptText());
+        if (!Objects.equals(prior.getReceiptHash(), receipt == null ? null : receipt.hash())) {
             throw new IllegalArgumentException("Idempotency key reused with different claim");
         }
-        if (async) {
-            ExtractionJob job = jobs.findById(prior.getId()).orElseThrow(() ->
-                new IllegalArgumentException("Idempotency key reused with a synchronous claim"));
-            if (input.receiptText() == null || !job.getInputHash().equals(hash(input.receiptText()))) {
-                throw new IllegalArgumentException("Idempotency key reused with different claim");
-            }
-        } else {
-            if (jobs.existsById(prior.getId())) {
-                throw new IllegalArgumentException("Idempotency key reused with an async claim");
-            }
-            ReceiptParser.Parsed receipt = input.receiptText() == null || input.receiptText().isBlank()
-                ? null : parser.parse(input.receiptText());
-            if (!Objects.equals(prior.getReceiptHash(), receipt == null ? null : receipt.hash())) {
-                throw new IllegalArgumentException("Idempotency key reused with different claim");
-            }
+        return prior;
+    }
+
+    /** Returns the earlier async claim for an identical retry, null for a new key, or throws on reuse. */
+    @Transactional(readOnly = true)
+    public Claim replayAsync(String employee, String key, String category, long amountCents,
+                             String inputHash) {
+        validateKey(key);
+        Claim prior = claims.findByIdempotencyKey(key).orElse(null);
+        if (prior == null) return null;
+        requireSameClaim(prior, employee, category, amountCents);
+        ExtractionJob job = jobs.findById(prior.getId()).orElseThrow(() ->
+            new IllegalArgumentException("Idempotency key reused with a synchronous claim"));
+        if (inputHash == null || !job.getInputHash().equals(inputHash)) {
+            throw new IllegalArgumentException("Idempotency key reused with different claim");
         }
         return prior;
+    }
+
+    private void requireSameClaim(Claim prior, String employee, String category, long amountCents) {
+        if (!prior.getEmployeeId().equals(employee) || !prior.getCategory().equals(category) ||
+            prior.getAmountCents() != amountCents) {
+            throw new IllegalArgumentException("Idempotency key reused with different claim");
+        }
     }
 
     @Transactional
