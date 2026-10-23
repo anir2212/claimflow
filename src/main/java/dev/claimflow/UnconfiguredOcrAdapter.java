@@ -9,4 +9,7 @@ public class UnconfiguredOcrAdapter implements OcrAdapter {
     public OcrText recognize(ReceiptImageValidator.ReceiptImage image) {
         throw new OcrUnavailableException("Image OCR is not configured on this server");
     }
+
+    @Override
+    public boolean configured() { return false; }
 }

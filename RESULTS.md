@@ -1,5 +1,41 @@
 # ClaimFlow measured results
 
+## Receipt upload, metrics and alert rules, and two-instance locking, 24 October 2026
+
+All runs used an Apple M3 Pro (11 cores, 18 GiB, macOS 15.3.1) shared with other jobs, Java 21 and Node 26.10. Timings are descriptive, not benchmarks.
+
+**Test suites.** All counts are from the final run after the last code change.
+
+| Suite | Before (003a6c4) | After |
+|---|---|---|
+| `./mvnw -o -q verify` (JaCoCo gate passed) | 70 passed, 0 failed, 0 skipped | **77 passed, 0 failed, 0 skipped** |
+| `npm test` (Vitest) | 2/2 | **10/10** |
+| `npm run build` | passed | passed, 156.60 kB JavaScript (50.70 kB gzip) |
+| `npm run test:e2e` (installed Chrome, one worker) | 2/2 on 16 October | **3/3 in 1.2 minutes** |
+
+The new backend tests are `ClaimMetricsIntegrationTest` (3), `ConcurrentDecisionIntegrationTest` (3) and one image-source visibility test; one existing test was extended. JaCoCo line coverage: ClaimService 116/126 (92.1%), ClaimMetrics 40/40, ClaimTransitionListener 5/5, ReceiptImageIntake 31/35 (88.6%), ExtractionProcessor 24/27 (88.9%).
+
+**Receipt upload.** Vitest covers the client checks: empty, oversized, wrong-type, non-image and mislabelled files are rejected without a request. It also covers a mocked successful upload with a 50% progress state, mocked 503, 413 and network failures, and the image-source label in the manager and finance views. The new Chrome flow ran against the real H2 API with no OCR engine. A `.txt` file and a 6 MiB PNG were refused in the browser. A 12-byte PNG reached the server, which answered **HTTP 503**, and the console reported that no claim was created; the employee's claim count did not change. A backend test with the scripted test adapter showed `receiptSource: IMAGE` in the owner's list, the manager queue and the finance list, and a second employee received 403. **No OCR ran and no image claim was created through a real engine.**
+
+**Alert rules.** Using the cached `prom/prometheus` image (promtool 3.15.0, no download), `promtool check rules alerts.yml` found **6 rules, SUCCESS**. `promtool test rules alerts_test.yml` passed **10 of 10 test groups**, one firing and at least one quiet case per rule. To check that the fixtures can fail, six edits were made one at a time to a scratch copy: three thresholds, one ratio, one `for` duration and one offset. Each made the suite fail (6/6). These are synthetic series. **No alert has fired in any deployment.**
+
+**Two-instance locking (protocol in [docs/MULTI_WORKER_PROTOCOL.md](docs/MULTI_WORKER_PROTOCOL.md), committed in `f760fd9` before either run).** Set-up: a disposable MySQL 8.4 from the cached image (`docker compose -p p06check`, fresh volume, since removed) and two host-run JARs on ports 18081 and 18082 with both extraction pollers on. Each run made 40 synchronous claims, raced 4 decisions per claim (approve and reject on each instance) with 40 requests in flight, raced 4 payments per approved claim, then shared 60 async jobs between the two pollers.
+
+| Criterion | `baseline` (JAR from `3998895`, no claim lock) | `fixed` (row lock + V6 version) |
+|---|---|---|
+| D1: one 2xx and three 409s per claim | **fail**: 30/40 claims failed; 22 accepted two or three decisions | pass, 40/40 (160 requests: 40 × 200, 120 × 409) |
+| D2: final state matches the winner | fail, 22/40 | pass |
+| D3: one decision audit event | fail, 22/40; up to 3 on one claim | pass, exactly 1 each |
+| P1: one payment per approved claim | **fail**: 15 of 22 approved claims; up to 3 `PAID` events on one claim | pass, 21/21 (84 requests: 21 × 200, 63 × 409) |
+| E1: 60 async claims extracted once each | pass, 60/60 in 3.6 s | pass, 60/60 in 6.8 s |
+| G1: no 5xx or transport error | passed as written, but see below | pass; server logs had no ERROR lines |
+
+The baseline's decision statuses were 64 × 200, 73 × 409 and **23 × 403**; its payment statuses were 37 × 200, 37 × 409 and 14 × 403. The server logs show that all 37 of the 403s were MySQL deadlock victims (`CannotAcquireLockException`). Each transaction's audit insert took a shared lock on the claim row through the foreign key before its update needed an exclusive one. Spring Security then denied the `/error` dispatch, so a server error reached the client as 403. G1 therefore did not catch them, although D1 and P1 did. With the fix, a broken multipart request returned 400 on the fixed JAR and 403 on the baseline JAR.
+
+`ConcurrentDecisionIntegrationTest`, which races four threads per claim on H2, **failed against the unfixed code**: all four racers succeeded on the first claim, for decisions and for payments. It passes after the fix. During the fixed run, a local Prometheus 3.15.0 (Compose `monitoring` profile, cached image) scraped both instances every 5 s. Both targets were `up`. The summed `claimflow_claim_transitions_total` matched the client exactly: 21 approved, 19 rejected, 21 paid, 100 submitted and 100 extracted. `claimflow_approval_latency_seconds_count` totalled 40. All six rules reported health `ok`, and none was pending or firing.
+
+Descriptive timings for the fixed run: decision p50 39 ms and p95 89 ms; payment p50 51 ms and p95 125 ms; 837 requests in total. Per-claim detail is in [`evidence/multiworker_baseline_2026-10-24.json`](evidence/multiworker_baseline_2026-10-24.json) and [`evidence/multiworker_fixed_2026-10-24.json`](evidence/multiworker_fixed_2026-10-24.json), copied unchanged from the script's ignored `target/` output so `mvn clean` cannot remove them. **Limits:** this is one run of one fixed workload on one laptop, against one MySQL container over loopback. It covers no submissions raced across instances, crashes, database restart, lock timeouts or failover. The fixed run used the database left by the baseline run, after Flyway applied V6.
+
 ## Receipt image seam and benchmark contract, 20 October 2026
 
 `./mvnw -q verify` with JDK 21.0.12.1 passed **70 tests, 0 failures, 0 errors, 0 skipped**, up from 56, including the JaCoCo service coverage gate. The new tests are:

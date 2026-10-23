@@ -1,7 +1,17 @@
 import { useCallback, useEffect, useState, type FormEvent } from 'react';
-import { answer, checkReceipt, claims, decide, login, markPaid, review, stats as loadStats, submit, type Answer, type Claim, type Review, type Role, type Stats } from './api';
+import { answer, checkReceipt, claims, decide, DEFAULT_IMAGE_LIMITS, formatBytes, imageLimits, login, markPaid, review, stats as loadStats, submit, submitImage, UploadError, validateReceiptImage, type Answer, type Claim, type ImageLimits, type ReceiptSource, type Review, type Role, type Stats } from './api';
 
 function money(cents: number) { return `SGD ${(cents / 100).toFixed(2)}`; }
+
+const SOURCE_LABEL: Record<ReceiptSource, string> = { NONE: 'No receipt', TEXT: 'Typed receipt', IMAGE: 'Image receipt' };
+
+function uploadMessage(err: unknown) {
+  if (!(err instanceof UploadError)) return (err as Error).message;
+  if (err.status === 503) return `${err.message}. No claim was created; submit a typed transcription instead.`;
+  if (err.status === 413) return 'The server refused the image as too large. No claim was created.';
+  if (err.status === 0) return `${err.message} Check My claims before trying again.`;
+  return `${err.message}. No claim was created.`;
+}
 
 export default function App() {
   const [selectedRole, setSelectedRole] = useState<Role>('employee');
@@ -20,6 +30,10 @@ export default function App() {
   const [error, setError] = useState('');
   const [notice, setNotice] = useState('');
   const [busy, setBusy] = useState(false);
+  const [limits, setLimits] = useState<ImageLimits>(DEFAULT_IMAGE_LIMITS);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [fileInputKey, setFileInputKey] = useState(0);
+  const [uploadPercent, setUploadPercent] = useState<number | null>(null);
 
   const refresh = useCallback(async () => {
     if (!role || !token) return;
@@ -42,6 +56,24 @@ export default function App() {
     return () => window.clearInterval(timer);
   }, [role, token, refresh]);
 
+  useEffect(() => {
+    if (role !== 'employee' || !token) return;
+    let current = true;
+    imageLimits(token).then(next => { if (current) setLimits(next); })
+      .catch(() => { if (current) setLimits(DEFAULT_IMAGE_LIMITS); });
+    return () => { current = false; };
+  }, [role, token]);
+
+  function clearImage() { setImageFile(null); setFileInputKey(key => key + 1); }
+
+  async function chooseImage(file: File | undefined) {
+    setError(''); setNotice('');
+    if (!file) { clearImage(); return; }
+    const problem = await validateReceiptImage(file, limits);
+    if (problem) { clearImage(); setError(problem); return; }
+    setImageFile(file);
+  }
+
   async function act(task: () => Promise<unknown>, success: string) {
     setBusy(true); setError(''); setNotice('');
     try { await task(); setNotice(success); await refresh(); }
@@ -61,6 +93,18 @@ export default function App() {
     event.preventDefault();
     const cents = Math.round(Number(amount) * 100);
     if (!Number.isFinite(cents) || cents <= 0) { setError('Enter a positive amount.'); return; }
+    if (imageFile) {
+      setBusy(true); setError(''); setNotice(''); setUploadPercent(0);
+      try {
+        await submitImage(token, category, cents, imageFile, setUploadPercent);
+        clearImage();
+        setNotice('Receipt image uploaded. Claim queued for receipt validation.');
+        await refresh();
+      }
+      catch (err) { setError(uploadMessage(err)); }
+      finally { setBusy(false); setUploadPercent(null); }
+      return;
+    }
     await act(() => submit(token, category, cents, receiptText),
       receiptText.trim() ? 'Claim queued for receipt validation.' : 'Claim submitted for review.');
   }
@@ -72,15 +116,15 @@ export default function App() {
   }
 
   return <div className="shell">
-    <header className="masthead"><div><span className="eyebrow">EXPENSE WORKFLOW</span><h1>ClaimFlow</h1><p>Traceable claims, grounded policy checks, clear decisions.</p></div>{role && <button className="quiet" onClick={() => { setRole(null); setToken(''); setRows([]); setReply(null); }}>Sign out</button>}</header>
+    <header className="masthead"><div><span className="eyebrow">EXPENSE WORKFLOW</span><h1>ClaimFlow</h1><p>Traceable claims, grounded policy checks, clear decisions.</p></div>{role && <button className="quiet" onClick={() => { setRole(null); setToken(''); setRows([]); setReply(null); clearImage(); setLimits(DEFAULT_IMAGE_LIMITS); }}>Sign out</button>}</header>
     {error && <p role="alert" className="message error">{error}</p>}
     {notice && <p role="status" className="message success">{notice}</p>}
     {!role ? <main className="login-card"><h2>Open local demo</h2><p>Choose a role and enter the local demo password.</p><form onSubmit={signIn} className="stack"><label>Role<select value={selectedRole} onChange={e => setSelectedRole(e.target.value as Role)}><option value="employee">Employee</option><option value="manager">Manager</option><option value="finance">Finance</option></select></label><label>Password<input type="password" value={password} onChange={e => setPassword(e.target.value)} required /></label><button disabled={busy}>Sign in</button></form></main> :
       <main className="layout"><section className="main-column">
         <div className="section-heading"><div><span className="eyebrow">{role.toUpperCase()} VIEW</span><h2>{role === 'employee' ? 'My claims' : role === 'manager' ? 'Approval queue' : 'Ready to pay'}</h2></div><button className="quiet" onClick={() => void refresh()}>Refresh</button></div>
         {role === 'finance' && stats && <div className="card"><h3>Claim summary</h3><p><strong>{stats.claimCount}</strong> claims · <strong>{money(stats.totalCents)}</strong> submitted</p><div className="claim-meta">{Object.entries(stats.byCategoryCents).map(([name, cents]) => <span key={name}>{name}: {money(cents)}</span>)}</div></div>}
-        {role === 'employee' && <form className="card stack" onSubmit={sendClaim}><h3>New claim</h3><div className="two"><label>Category<select value={category} onChange={e => setCategory(e.target.value)}><option value="meal">Meal</option><option value="taxi">Taxi</option><option value="lodging">Lodging</option><option value="other">Other</option></select></label><label>Amount (SGD)<input type="number" min="0.01" step="0.01" value={amount} onChange={e => setAmount(e.target.value)} required /></label></div><label>Receipt transcription<textarea rows={5} value={receiptText} onChange={e => setReceiptText(e.target.value)} placeholder={'Merchant: Example Cafe\nDate: 2026-10-01\nTotal: SGD 12.50'} /></label><label className="upload">Load a .txt receipt<input type="file" accept=".txt,text/plain" onChange={async e => { const file = e.target.files?.[0]; if (file) setReceiptText(await file.text()); }} /></label><p className="hint">Text baseline only. A scanned image needs the later OCR worker.</p><button disabled={busy}>Submit claim</button></form>}
-        <div className="claims">{rows.length === 0 ? <div className="card empty">No claims in this view.</div> : rows.map(claim => <article className="card claim" key={claim.id}><div className="claim-top"><div><strong>{claim.merchant || claim.category}</strong><span className="muted">{claim.id.slice(0, 8)} · {claim.employeeId}</span></div><strong>{money(claim.amountCents)}</strong></div><div className="claim-meta"><span className={`badge ${claim.state.toLowerCase()}`}>{claim.state.replace('_', ' ')}</span><span>{claim.category}</span><span>{claim.expenseDate || 'No receipt date'}</span></div>{role === 'manager' && claim.state === 'NEEDS_HUMAN_CHECK' && <div className="stack"><label>Corrected receipt transcription<textarea rows={4} value={corrections[claim.id] || ''} onChange={e => setCorrections({ ...corrections, [claim.id]: e.target.value })} /></label><button disabled={busy || !corrections[claim.id]?.trim()} onClick={() => void act(() => checkReceipt(token, claim.id, corrections[claim.id]), 'Receipt checked and claim sent to review.')}>Complete receipt check</button></div>}{role === 'manager' && claim.state === 'IN_REVIEW' && <div className="actions"><button className="quiet" onClick={async () => { try { setReviews({ ...reviews, [claim.id]: await review(token, claim.id) }); } catch (err) { setError((err as Error).message); } }}>Review policy</button><button disabled={busy} onClick={() => void act(() => decide(token, claim.id, true), 'Claim approved.')}>Approve</button><button className="danger" disabled={busy} onClick={() => void act(() => decide(token, claim.id, false), 'Claim rejected.')}>Reject</button></div>}{role === 'finance' && <div className="actions"><button disabled={busy} onClick={() => void act(() => markPaid(token, claim.id), 'Claim marked paid.')}>Mark paid</button></div>}{reviews[claim.id] && <div className="review"><strong>{reviews[claim.id].eligible ? 'Eligible under hard rules' : 'Policy block'}</strong><p>{reviews[claim.id].violations.join('; ') || 'No hard-rule violation.'}</p><small>Clauses: {reviews[claim.id].citations.join(', ') || 'none'}</small></div>}</article>)}</div>
+        {role === 'employee' && <form className="card stack" onSubmit={sendClaim}><h3>New claim</h3><div className="two"><label>Category<select value={category} onChange={e => setCategory(e.target.value)}><option value="meal">Meal</option><option value="taxi">Taxi</option><option value="lodging">Lodging</option><option value="other">Other</option></select></label><label>Amount (SGD)<input type="number" min="0.01" step="0.01" value={amount} onChange={e => setAmount(e.target.value)} required /></label></div><label>Receipt transcription<textarea rows={5} value={receiptText} disabled={imageFile !== null} onChange={e => setReceiptText(e.target.value)} placeholder={'Merchant: Example Cafe\nDate: 2026-10-01\nTotal: SGD 12.50'} /></label><label className="upload">Load a .txt receipt<input type="file" accept=".txt,text/plain" disabled={imageFile !== null} onChange={async e => { const file = e.target.files?.[0]; if (file) setReceiptText(await file.text()); }} /></label><label className="upload">Receipt image (PNG or JPEG, up to {formatBytes(limits.maxBytes)})<input key={fileInputKey} type="file" accept={limits.mediaTypes.join(',')} disabled={busy} onChange={e => void chooseImage(e.target.files?.[0])} /></label>{imageFile && <p className="attachment">Attached: {imageFile.name} · {formatBytes(imageFile.size)} <button type="button" className="quiet" disabled={busy} onClick={clearImage}>Remove image</button></p>}{uploadPercent !== null && <div className="progress"><progress aria-label="Upload progress" max={100} value={uploadPercent} /><span>Uploading {uploadPercent}%</span></div>}{limits.ocrConfigured ? <p className="hint">An attached image is sent instead of the transcription; its text goes through the same receipt checks.</p> : <p className="hint warning">This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.</p>}<button disabled={busy}>Submit claim</button></form>}
+        <div className="claims">{rows.length === 0 ? <div className="card empty">No claims in this view.</div> : rows.map(claim => <article className="card claim" key={claim.id}><div className="claim-top"><div><strong>{claim.merchant || claim.category}</strong><span className="muted">{claim.id.slice(0, 8)} · {claim.employeeId}</span></div><strong>{money(claim.amountCents)}</strong></div><div className="claim-meta"><span className={`badge ${claim.state.toLowerCase()}`}>{claim.state.replace('_', ' ')}</span><span>{claim.category}</span><span>{claim.expenseDate || 'No receipt date'}</span>{claim.receiptSource && <span className="receipt-source">{SOURCE_LABEL[claim.receiptSource]}</span>}</div>{role === 'manager' && claim.state === 'NEEDS_HUMAN_CHECK' && <div className="stack">{claim.receiptSource === 'IMAGE' && <p className="hint">The uploaded image is not stored on the server. Ask the employee for the receipt before typing a correction.</p>}<label>Corrected receipt transcription<textarea rows={4} value={corrections[claim.id] || ''} onChange={e => setCorrections({ ...corrections, [claim.id]: e.target.value })} /></label><button disabled={busy || !corrections[claim.id]?.trim()} onClick={() => void act(() => checkReceipt(token, claim.id, corrections[claim.id]), 'Receipt checked and claim sent to review.')}>Complete receipt check</button></div>}{role === 'manager' && claim.state === 'IN_REVIEW' && <div className="actions"><button className="quiet" onClick={async () => { try { setReviews({ ...reviews, [claim.id]: await review(token, claim.id) }); } catch (err) { setError((err as Error).message); } }}>Review policy</button><button disabled={busy} onClick={() => void act(() => decide(token, claim.id, true), 'Claim approved.')}>Approve</button><button className="danger" disabled={busy} onClick={() => void act(() => decide(token, claim.id, false), 'Claim rejected.')}>Reject</button></div>}{role === 'finance' && <div className="actions"><button disabled={busy} onClick={() => void act(() => markPaid(token, claim.id), 'Claim marked paid.')}>Mark paid</button></div>}{reviews[claim.id] && <div className="review"><strong>{reviews[claim.id].eligible ? 'Eligible under hard rules' : 'Policy block'}</strong><p>{reviews[claim.id].violations.join('; ') || 'No hard-rule violation.'}</p><small>Clauses: {reviews[claim.id].citations.join(', ') || 'none'}</small></div>}</article>)}</div>
       </section><aside className="side-column"><div className="card stack"><span className="eyebrow">POLICY DESK</span><h3>Ask a policy question</h3><form className="stack" onSubmit={askPolicy}><label>Question<input value={question} onChange={e => setQuestion(e.target.value)} placeholder="Can I claim a taxi after 10 pm?" required /></label><button className="secondary">Ask</button></form>{reply && <div className="answer"><p>{reply.answer}</p><small>{reply.citations.length ? `Cited: ${reply.citations.join(', ')}` : 'No supporting clause'}</small></div>}<p className="hint">Current answers use a four-clause keyword baseline.</p></div></aside></main>}
     <footer>Local development demo · No real expense data</footer>
   </div>;

@@ -28,7 +28,7 @@ public class ExtractionProcessor {
         ExtractionJob job = jobs.lockById(claimId).orElseThrow(() ->
             new IllegalArgumentException("Unknown extraction job"));
         if (!job.due(Instant.now())) return;
-        Claim claim = claims.findById(claimId).orElseThrow();
+        Claim claim = claims.lockById(claimId).orElseThrow(); // job row first, then claim row
         if (claim.getState() != ClaimState.SUBMITTED) {
             job.done();
             return;

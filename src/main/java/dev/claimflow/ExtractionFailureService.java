@@ -24,7 +24,7 @@ public class ExtractionFailureService {
         if (!job.due(Instant.now())) return;
         job.retry(error.getClass().getSimpleName(), Instant.now());
         if (job.getStatus() == ExtractionJob.Status.DEAD) {
-            Claim claim = claims.findById(claimId).orElseThrow();
+            Claim claim = claims.lockById(claimId).orElseThrow();
             if (claim.getState() == ClaimState.SUBMITTED) {
                 claim.move(ClaimState.NEEDS_HUMAN_CHECK);
                 events.save(new AuditEvent(claimId, "extraction-worker", "NEEDS_HUMAN_CHECK",

@@ -15,6 +15,9 @@ public interface OcrAdapter {
      */
     OcrText recognize(ReceiptImageValidator.ReceiptImage image);
 
+    /** False when no engine is wired in, so clients can warn before uploading. */
+    default boolean configured() { return true; }
+
     /** The image is well formed enough to accept but the engine cannot read it. */
     class UnreadableReceiptImageException extends IllegalArgumentException {
         public UnreadableReceiptImageException(String message) { super(message); }

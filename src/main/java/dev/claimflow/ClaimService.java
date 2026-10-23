@@ -69,7 +69,8 @@ public class ClaimService {
     public Claim submitAsync(String employee, String key, Submit input) {
         validateKey(key);
         requireAsyncText(input.receiptText());
-        return queue(employee, key, input, hash(input.receiptText()), "Async text extraction queued");
+        return queue(employee, key, input, hash(input.receiptText()), Claim.ReceiptSource.TEXT,
+            "Async text extraction queued");
     }
 
     /**
@@ -82,7 +83,7 @@ public class ClaimService {
         validateKey(key);
         requireAsyncText(input.receiptText());
         String source = engine == null || engine.isBlank() ? "unnamed" : engine.strip();
-        return queue(employee, key, input, imageHash,
+        return queue(employee, key, input, imageHash, Claim.ReceiptSource.IMAGE,
             "Image OCR text queued (" + source.substring(0, Math.min(60, source.length())) + ")");
     }
 
@@ -92,12 +93,14 @@ public class ClaimService {
         }
     }
 
-    private Claim queue(String employee, String key, Submit input, String inputHash, String detail) {
+    private Claim queue(String employee, String key, Submit input, String inputHash,
+                        Claim.ReceiptSource source, String detail) {
         if (claims.findByIdempotencyKey(key).isPresent()) {
             return replayAsync(employee, key, input.category(), input.amountCents(), inputHash);
         }
         Claim claim = new Claim(employee, input.category(), input.amountCents(),
             null, null, null, key);
+        claim.receivedReceiptAs(source);
         claim.move(ClaimState.SUBMITTED);
         claims.save(claim);
         jobs.save(new ExtractionJob(claim.getId(), input.receiptText(), inputHash));
@@ -151,7 +154,7 @@ public class ClaimService {
 
     @Transactional
     public Claim resolveReceipt(String id, String manager, String receiptText) {
-        Claim claim = get(id);
+        Claim claim = locked(id);
         if (claim.getState() != ClaimState.NEEDS_HUMAN_CHECK) {
             throw new IllegalStateException("Claim is not awaiting receipt check");
         }
@@ -197,6 +200,11 @@ public class ClaimService {
         return claims.findById(id).orElseThrow(() -> new IllegalArgumentException("Unknown claim"));
     }
 
+    /** Row-locked read for a state change; callers must already be in a write transaction. */
+    private Claim locked(String id) {
+        return claims.lockById(id).orElseThrow(() -> new IllegalArgumentException("Unknown claim"));
+    }
+
     @Transactional(readOnly = true)
     public List<Claim> mine(String employee) { return claims.findByEmployeeIdOrderByCreatedAtDesc(employee); }
 
@@ -230,7 +238,7 @@ public class ClaimService {
 
     @Transactional
     public Claim decide(String id, String manager, Decision decision) {
-        Claim claim = get(id);
+        Claim claim = locked(id);
         if (claim.getEmployeeId().equals(manager)) throw new IllegalArgumentException("Self approval denied");
         if (decision.approve() && !policy.review(claim, decision.taxiTime(), decision.managerNote()).eligible()) {
             throw new IllegalStateException("Hard policy rule blocks approval");
@@ -243,7 +251,7 @@ public class ClaimService {
 
     @Transactional
     public Claim markPaid(String id, String finance) {
-        Claim claim = get(id);
+        Claim claim = locked(id);
         claim.move(ClaimState.PAID);
         events.save(new AuditEvent(id, finance, "PAID", "Finance settlement"));
         return claim;

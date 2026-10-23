@@ -40,8 +40,9 @@ public class SecurityConfig {
             .httpBasic(AbstractHttpConfigurer::disable)
             .formLogin(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
+                // "/error" is Spring's error page. Denying it turned unhandled server errors into 403s.
                 .requestMatchers("/actuator/health", "/actuator/prometheus", "/api/auth/token", "/v3/api-docs/**",
-                    "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                    "/swagger-ui/**", "/swagger-ui.html", "/error").permitAll()
                 .requestMatchers("/api/**").authenticated()
                 .anyRequest().denyAll())
             .addFilterBefore(new TokenFilter(jwt), UsernamePasswordAuthenticationFilter.class)

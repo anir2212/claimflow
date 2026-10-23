@@ -266,6 +266,21 @@ class ClaimFlowIntegrationTest {
             .andExpect(status().isServiceUnavailable())
             .andExpect(jsonPath("$.error", is("Image OCR is not configured on this server")));
         org.junit.jupiter.api.Assertions.assertFalse(claimRepository.findByIdempotencyKey(key).isPresent());
+        mvc.perform(get("/api/claims/image/limits").header("Authorization", employee))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.maxBytes", is(5242880)))
+            .andExpect(jsonPath("$.mediaTypes[0]", is("image/png")))
+            .andExpect(jsonPath("$.mediaTypes[1]", is("image/jpeg")))
+            .andExpect(jsonPath("$.ocrConfigured", is(false)));
+        mvc.perform(get("/api/claims/image/limits").header("Authorization", token("manager")))
+            .andExpect(status().isForbidden());
+        String typed = json.writeValueAsString(new ClaimService.Submit("meal", 1000,
+            "Merchant: Source Cafe " + key + "\nDate: 2026-10-10\nTotal: SGD 10.00"));
+        mvc.perform(post("/api/claims").header("Authorization", employee).header("Idempotency-Key", key + "-text")
+                .contentType(MediaType.APPLICATION_JSON).content(typed))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.receiptSource", is("TEXT")));
+        mvc.perform(post("/api/claims").header("Authorization", employee).header("Idempotency-Key", key + "-none")
+                .contentType(MediaType.APPLICATION_JSON).content("{\"category\":\"meal\",\"amountCents\":900}"))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.receiptSource", is("NONE")));
     }
 
     @Test

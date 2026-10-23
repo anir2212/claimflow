@@ -30,5 +30,21 @@ services:
       CLAIMFLOW_DEMO_PASSWORD: local-only
     ports:
       - "127.0.0.1:18080:8080"
+  # Optional: `docker compose --profile monitoring up -d prometheus` scrapes a host-run API.
+  # Not started by a plain `docker compose up`. Set PROMETHEUS_CONFIG=prometheus-two-instances.yml
+  # to scrape the two-instance check on ports 18081 and 18082 instead of port 8080.
+  prometheus:
+    image: prom/prometheus:v3.15.0
+    profiles: ["monitoring"]
+    command:
+      - --config.file=/etc/prometheus/${PROMETHEUS_CONFIG:-prometheus.yml}
+      - --storage.tsdb.path=/prometheus
+      - --storage.tsdb.retention.time=2d
+    volumes:
+      - ./ops/prometheus:/etc/prometheus:ro
+    ports:
+      - "127.0.0.1:19090:9090"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 volumes:
   claimflow_mysql:

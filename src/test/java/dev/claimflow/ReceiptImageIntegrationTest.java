@@ -52,6 +52,7 @@ class ReceiptImageIntegrationTest {
     @Autowired ExtractionProcessor extraction;
     @Autowired ExtractionJobRepository jobs;
     @Autowired ClaimRepository claims;
+    @Autowired JwtService jwt;
 
     private String token(String user) throws Exception {
         String body = json.writeValueAsString(new AuthController.Credentials(user, "local-only"));
@@ -96,6 +97,35 @@ class ReceiptImageIntegrationTest {
             .andExpect(jsonPath("$[0].detail", containsString("Image OCR text queued (scripted-test-ocr)")))
             .andExpect(jsonPath("$[1].action", is("EXTRACTED")));
         upload(token("manager"), "ocr-role-" + merchant, 1420, image, "image/png").andExpect(status().isForbidden());
+    }
+
+    @Test
+    void imageSourceIsVisibleToOwnerManagerAndFinanceOnly() throws Exception {
+        String employee = token("employee");
+        String manager = token("manager");
+        String finance = token("finance");
+        String merchant = "Synthetic Visible Noodles " + UUID.randomUUID();
+        byte[] image = SyntheticReceiptImages.png(merchant);
+        ocr.returns(image, receipt(merchant, "2026-10-16", "11.40"));
+        mvc.perform(get("/api/claims/image/limits").header("Authorization", employee))
+            .andExpect(status().isOk()).andExpect(jsonPath("$.maxBytes", is(4096)))
+            .andExpect(jsonPath("$.ocrConfigured", is(true)));
+        String id = id(upload(employee, "ocr-visible-" + merchant, 1140, image, "image/png")
+            .andExpect(status().isOk()).andExpect(jsonPath("$.receiptSource", is("IMAGE"))));
+        mvc.perform(get("/api/claims/mine").header("Authorization", employee))
+            .andExpect(jsonPath("$[?(@.id == '" + id + "')].receiptSource", org.hamcrest.Matchers.contains("IMAGE")));
+        extraction.processOne(id);
+        mvc.perform(get("/api/claims/queue").header("Authorization", manager))
+            .andExpect(jsonPath("$[?(@.id == '" + id + "')].receiptSource", org.hamcrest.Matchers.contains("IMAGE")));
+        mvc.perform(post("/api/claims/" + id + "/decision").header("Authorization", manager)
+            .contentType(MediaType.APPLICATION_JSON).content("{\"approve\":true}")).andExpect(status().isOk());
+        mvc.perform(get("/api/claims/approved").header("Authorization", finance))
+            .andExpect(jsonPath("$[?(@.id == '" + id + "')].receiptSource", org.hamcrest.Matchers.contains("IMAGE")));
+        String otherEmployee = "Bearer " + jwt.issue("employee-2", "EMPLOYEE");
+        mvc.perform(get("/api/claims/" + id).header("Authorization", otherEmployee))
+            .andExpect(status().isForbidden());
+        mvc.perform(get("/api/claims/mine").header("Authorization", otherEmployee))
+            .andExpect(jsonPath("$[?(@.id == '" + id + "')]", org.hamcrest.Matchers.empty()));
     }
 
     @Test
