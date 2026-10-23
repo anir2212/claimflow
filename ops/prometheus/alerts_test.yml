@@ -1,0 +1,184 @@
+# Unit tests for alerts.yml: synthetic series only, one firing and one quiet case per alert.
+# Run: promtool test rules alerts_test.yml
+rule_files:
+  - alerts.yml
+evaluation_interval: 1m
+
+tests:
+  - name: api down fires after two minutes for the failing instance only
+    interval: 1m
+    input_series:
+      - series: 'up{job="claimflow", instance="api-a:8080"}'
+        values: '1 1 0 0 0 0 0'
+      - series: 'up{job="claimflow", instance="api-b:8080"}'
+        values: '1x6'
+    alert_rule_test:
+      - eval_time: 3m
+        alertname: ClaimFlowApiDown
+        exp_alerts: []
+      - eval_time: 5m
+        alertname: ClaimFlowApiDown
+        exp_alerts:
+          - exp_labels:
+              severity: page
+              job: claimflow
+              instance: api-a:8080
+            exp_annotations:
+              summary: "ClaimFlow API api-a:8080 cannot be scraped"
+              description: "Prometheus has failed to scrape /actuator/prometheus on this instance for 2 minutes."
+
+  - name: extraction backlog above 25 for ten minutes
+    interval: 1m
+    input_series:
+      - series: 'claimflow_extraction_jobs{status="PENDING", instance="api-a:8080"}'
+        values: '20x20'
+      - series: 'claimflow_extraction_jobs{status="RETRY", instance="api-a:8080"}'
+        values: '10x20'
+      - series: 'claimflow_extraction_jobs{status="PENDING", instance="api-b:8080"}'
+        values: '20x20'
+      - series: 'claimflow_extraction_jobs{status="RETRY", instance="api-b:8080"}'
+        values: '10x20'
+    alert_rule_test:
+      - eval_time: 9m
+        alertname: ClaimFlowExtractionBacklogHigh
+        exp_alerts: []
+      - eval_time: 12m
+        alertname: ClaimFlowExtractionBacklogHigh
+        exp_alerts:
+          - exp_labels:
+              severity: ticket
+            exp_annotations:
+              summary: "More than 25 receipt extraction jobs are waiting"
+              description: "Pending plus retry jobs have stayed above 25 for 10 minutes. Check that at least one extraction worker is enabled and healthy."
+
+  - name: backlog of 24 reported by two instances is not summed into an alert
+    interval: 1m
+    input_series:
+      - series: 'claimflow_extraction_jobs{status="PENDING", instance="api-a:8080"}'
+        values: '20x20'
+      - series: 'claimflow_extraction_jobs{status="RETRY", instance="api-a:8080"}'
+        values: '4x20'
+      - series: 'claimflow_extraction_jobs{status="PENDING", instance="api-b:8080"}'
+        values: '20x20'
+      - series: 'claimflow_extraction_jobs{status="RETRY", instance="api-b:8080"}'
+        values: '4x20'
+    alert_rule_test:
+      - eval_time: 15m
+        alertname: ClaimFlowExtractionBacklogHigh
+        exp_alerts: []
+
+  - name: dead-lettered jobs alert while the count is above its value 30 minutes earlier
+    interval: 1m
+    input_series:
+      - series: 'claimflow_extraction_jobs{status="DEAD", instance="api-a:8080"}'
+        values: '2x40 3x50'
+    alert_rule_test:
+      - eval_time: 35m
+        alertname: ClaimFlowExtractionJobsDeadLettered
+        exp_alerts: []
+      - eval_time: 45m
+        alertname: ClaimFlowExtractionJobsDeadLettered
+        exp_alerts:
+          - exp_labels:
+              severity: ticket
+            exp_annotations:
+              summary: "Receipt extraction jobs were dead-lettered in the last 30 minutes"
+              description: "The number of DEAD extraction jobs grew. Those claims are waiting in the manager receipt-check queue."
+      - eval_time: 80m
+        alertname: ClaimFlowExtractionJobsDeadLettered
+        exp_alerts: []
+
+  - name: half of 60 claims per hour needing a manual check
+    interval: 1m
+    input_series:
+      - series: 'claimflow_claim_transitions_total{from="DRAFT", to="SUBMITTED", instance="api-a:8080"}'
+        values: '0+1x120'
+      - series: 'claimflow_claim_transitions_total{from="SUBMITTED", to="NEEDS_HUMAN_CHECK", instance="api-a:8080"}'
+        values: '0+0.5x120'
+    alert_rule_test:
+      - eval_time: 90m
+        alertname: ClaimFlowHumanCheckRateHigh
+        exp_alerts:
+          - exp_labels:
+              severity: ticket
+            exp_annotations:
+              summary: "Over 30% of new claims need a manual receipt check"
+              description: "In the last hour more than 30% of at least 10 submitted claims moved to NEEDS_HUMAN_CHECK."
+
+  - name: same ratio at six claims per hour stays quiet
+    interval: 1m
+    input_series:
+      - series: 'claimflow_claim_transitions_total{from="DRAFT", to="SUBMITTED", instance="api-a:8080"}'
+        values: '0+0.1x120'
+      - series: 'claimflow_claim_transitions_total{from="SUBMITTED", to="NEEDS_HUMAN_CHECK", instance="api-a:8080"}'
+        values: '0+0.05x120'
+    alert_rule_test:
+      - eval_time: 90m
+        alertname: ClaimFlowHumanCheckRateHigh
+        exp_alerts: []
+
+  - name: decisions taking about three days
+    interval: 10m
+    input_series:
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="86400.0", instance="api-a:8080"}'
+        values: '0x60'
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="172800.0", instance="api-a:8080"}'
+        values: '0x60'
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="259200.0", instance="api-a:8080"}'
+        values: '0+1x60'
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="+Inf", instance="api-a:8080"}'
+        values: '0+1x60'
+    alert_rule_test:
+      - eval_time: 8h
+        alertname: ClaimFlowApprovalLatencyHigh
+        exp_alerts:
+          - exp_labels:
+              severity: ticket
+            exp_annotations:
+              summary: "90th percentile time to a manager decision is over 2 days"
+              description: "Measured from claim creation to approval or rejection over the last 6 hours of decisions."
+
+  - name: decisions within a day stay quiet
+    interval: 10m
+    input_series:
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="86400.0", instance="api-a:8080"}'
+        values: '0+1x60'
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="172800.0", instance="api-a:8080"}'
+        values: '0+1x60'
+      - series: 'claimflow_approval_latency_seconds_bucket{outcome="approved", le="+Inf", instance="api-a:8080"}'
+        values: '0+1x60'
+    alert_rule_test:
+      - eval_time: 8h
+        alertname: ClaimFlowApprovalLatencyHigh
+        exp_alerts: []
+
+  - name: two thirds of uploads hit an unavailable OCR engine
+    interval: 1m
+    input_series:
+      - series: 'claimflow_receipt_uploads_total{outcome="ocr_unavailable", instance="api-a:8080"}'
+        values: '0+2x60'
+      - series: 'claimflow_receipt_uploads_total{outcome="queued", instance="api-a:8080"}'
+        values: '0+1x60'
+    alert_rule_test:
+      - eval_time: 40m
+        alertname: ClaimFlowReceiptUploadsFailing
+        exp_alerts:
+          - exp_labels:
+              severity: ticket
+            exp_annotations:
+              summary: "Most receipt image uploads are failing at the OCR step"
+              description: "Over half of image uploads in 15 minutes ended as OCR unavailable or unreadable. With no OCR engine configured, every upload ends this way."
+
+  - name: a quarter of uploads failing stays quiet, and client-side rejections do not count
+    interval: 1m
+    input_series:
+      - series: 'claimflow_receipt_uploads_total{outcome="ocr_unavailable", instance="api-a:8080"}'
+        values: '0+1x60'
+      - series: 'claimflow_receipt_uploads_total{outcome="invalid", instance="api-a:8080"}'
+        values: '0+5x60'
+      - series: 'claimflow_receipt_uploads_total{outcome="queued", instance="api-a:8080"}'
+        values: '0+3x60'
+    alert_rule_test:
+      - eval_time: 40m
+        alertname: ClaimFlowReceiptUploadsFailing
+        exp_alerts: []

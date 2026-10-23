@@ -36,6 +36,16 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+  alert-rules:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check and unit-test Prometheus alert rules
+        run: |
+          docker run --rm --entrypoint promtool -v "$PWD/ops/prometheus:/rules:ro" -w /rules \
+            prom/prometheus:v3.15.0 check rules alerts.yml
+          docker run --rm --entrypoint promtool -v "$PWD/ops/prometheus:/rules:ro" -w /rules \
+            prom/prometheus:v3.15.0 test rules alerts_test.yml
   browser-e2e:
     # Pinned: the locked Playwright release cannot install Chromium on ubuntu-latest (26.04).
     runs-on: ubuntu-24.04

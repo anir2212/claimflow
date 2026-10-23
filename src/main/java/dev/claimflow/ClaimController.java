@@ -63,6 +63,11 @@ public class ClaimController {
             receipt.getContentType());
     }
 
+    /** Upload limits and whether an OCR engine is wired in; lets the console validate before sending. */
+    @GetMapping("/image/limits")
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    public ReceiptImageIntake.Limits imageLimits() { return images.limits(); }
+
     public record ReceiptCheck(String receiptText) {}
 
     @PostMapping("/{id}/receipt-check")

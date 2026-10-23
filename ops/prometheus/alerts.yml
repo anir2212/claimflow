@@ -1,0 +1,67 @@
+# ClaimFlow alert rules. Checked with `promtool check rules` and unit-tested with
+# `promtool test rules alerts_test.yml`. Thresholds are starting points for a local demo,
+# not values tuned on production traffic. Every instance reports the same database-backed
+# extraction gauges, so those rules take the maximum across instances instead of a sum.
+groups:
+  - name: claimflow
+    rules:
+      - alert: ClaimFlowApiDown
+        expr: up{job="claimflow"} == 0
+        for: 2m
+        labels:
+          severity: page
+        annotations:
+          summary: "ClaimFlow API {{ $labels.instance }} cannot be scraped"
+          description: "Prometheus has failed to scrape /actuator/prometheus on this instance for 2 minutes."
+
+      - alert: ClaimFlowExtractionBacklogHigh
+        expr: max(sum by (instance) (claimflow_extraction_jobs{status=~"PENDING|RETRY"})) > 25
+        for: 10m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "More than 25 receipt extraction jobs are waiting"
+          description: "Pending plus retry jobs have stayed above 25 for 10 minutes. Check that at least one extraction worker is enabled and healthy."
+
+      - alert: ClaimFlowExtractionJobsDeadLettered
+        expr: max(claimflow_extraction_jobs{status="DEAD"}) > max(claimflow_extraction_jobs{status="DEAD"} offset 30m)
+        labels:
+          severity: ticket
+        annotations:
+          summary: "Receipt extraction jobs were dead-lettered in the last 30 minutes"
+          description: "The number of DEAD extraction jobs grew. Those claims are waiting in the manager receipt-check queue."
+
+      - alert: ClaimFlowHumanCheckRateHigh
+        expr: |
+          (
+            sum(increase(claimflow_claim_transitions_total{to="NEEDS_HUMAN_CHECK"}[1h]))
+              / sum(increase(claimflow_claim_transitions_total{from="DRAFT", to="SUBMITTED"}[1h]))
+          ) > 0.3
+          and
+          sum(increase(claimflow_claim_transitions_total{from="DRAFT", to="SUBMITTED"}[1h])) >= 10
+        for: 15m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "Over 30% of new claims need a manual receipt check"
+          description: "In the last hour more than 30% of at least 10 submitted claims moved to NEEDS_HUMAN_CHECK."
+
+      - alert: ClaimFlowApprovalLatencyHigh
+        expr: histogram_quantile(0.9, sum by (le) (rate(claimflow_approval_latency_seconds_bucket[6h]))) > 172800
+        for: 1h
+        labels:
+          severity: ticket
+        annotations:
+          summary: "90th percentile time to a manager decision is over 2 days"
+          description: "Measured from claim creation to approval or rejection over the last 6 hours of decisions."
+
+      - alert: ClaimFlowReceiptUploadsFailing
+        expr: |
+          sum(rate(claimflow_receipt_uploads_total{outcome=~"ocr_unavailable|unreadable"}[15m]))
+            / sum(rate(claimflow_receipt_uploads_total[15m])) > 0.5
+        for: 15m
+        labels:
+          severity: ticket
+        annotations:
+          summary: "Most receipt image uploads are failing at the OCR step"
+          description: "Over half of image uploads in 15 minutes ended as OCR unavailable or unreadable. With no OCR engine configured, every upload ends this way."

@@ -1,0 +1,2835 @@
+{
+  "label": "baseline",
+  "nonce": "253bbd2378",
+  "instances": [
+    "http://127.0.0.1:18081",
+    "http://127.0.0.1:18082"
+  ],
+  "started": "2026-10-24T01:30:09+0800",
+  "criteria": {
+    "D1": false,
+    "D2": false,
+    "D3": false,
+    "P1": false,
+    "E1": true,
+    "G1": true
+  },
+  "passed": false,
+  "summary": {
+    "claims": 40,
+    "decision_requests": 160,
+    "decision_status_counts": {
+      "200": 64,
+      "403": 23,
+      "409": 73
+    },
+    "claims_failing_D1": 30,
+    "claims_failing_D2": 22,
+    "claims_failing_D3": 22,
+    "claims_with_multiple_2xx_decisions": 22,
+    "max_decision_audit_events_on_one_claim": 3,
+    "final_states": {
+      "APPROVED": 22,
+      "REJECTED": 18
+    },
+    "approved_claims_raced_for_payment": 22,
+    "payment_requests": 88,
+    "payment_status_counts": {
+      "200": 37,
+      "403": 14,
+      "409": 37
+    },
+    "claims_failing_P1": 15,
+    "max_paid_audit_events_on_one_claim": 3,
+    "async_submitted": 60,
+    "async_submit_errors": 0,
+    "async_final_states": {
+      "IN_REVIEW": 60
+    },
+    "async_failing_E1": 0,
+    "extraction_wall_seconds": 3.6,
+    "server_or_transport_errors": 0,
+    "total_requests": 729,
+    "timing_descriptive_only": {
+      "setup": {
+        "requests": 40,
+        "p50_ms": 12.0,
+        "p95_ms": 19.6,
+        "max_ms": 91.3
+      },
+      "decision": {
+        "requests": 160,
+        "p50_ms": 50.0,
+        "p95_ms": 111.8,
+        "max_ms": 153.8
+      },
+      "payment": {
+        "requests": 88,
+        "p50_ms": 46.4,
+        "p95_ms": 55.0,
+        "max_ms": 55.7
+      },
+      "async_submit": {
+        "requests": 60,
+        "p50_ms": 22.7,
+        "p95_ms": 32.4,
+        "max_ms": 34.6
+      }
+    }
+  },
+  "decisions": [
+    {
+      "claim": "527e33d9-c281-40fd-b5b7-68e521be8309",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "f2b6a836-1d6d-4d83-a9e5-c2c910070d8e",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "b5cabb13-bf5f-415e-ad85-981797ffca47",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "0ae1f68c-63d7-4bc4-a738-c10774dc7300",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "05292a64-0fba-49d5-b6ad-ba67ad5f3dc4",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "ada58893-3e02-45cb-b47e-e73ebfdbf4aa",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "2cf24834-ec05-47c4-a88a-29902dea1825",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "b8c64e41-2f9b-4bba-8a1d-fc65567c17b2",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "0fcd44cb-128f-4233-b813-4b3c137766a1",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "6f41d109-6c7f-44b0-a9c2-535965f8ccab",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "47f7abaf-ccf7-4bc6-a03e-f987bb92ecbc",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "58703053-36af-4b65-af9e-532d1b612743",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "7d16cfe2-f2bb-4f84-ac48-56c6e2256476",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "dd8b2856-63df-4eb9-8110-fc159d41db96",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "2ecccf88-8bc3-4ba9-8d3f-9d53e74b5c85",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "f2877ca4-b7ed-419f-ad77-a004a50ebbf8",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "e5ced818-b313-4a1d-acb4-bdd2b0fa3fd3",
+      "winners": 3,
+      "conflicts_409": 0,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 3,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "09d59974-e101-44d9-af9a-b571fdd5cc70",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "e1a0202f-2f64-4825-b154-8510785aa0df",
+      "winners": 1,
+      "conflicts_409": 1,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "0da23720-f781-4119-83ee-3ee6304beb37",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "61911b4a-8e7a-48b8-99a2-64ac34d85a1e",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "a78dd22b-ec15-431b-ab28-93e5f04fa75f",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "6006a2eb-fc30-4c06-bf01-2c89c4aff070",
+      "winners": 3,
+      "conflicts_409": 1,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 3,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "de1c9f72-24e5-4e23-b8eb-31baf251503b",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "f82b005e-f85a-4c2f-8618-a4bc022fe6b3",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "f5a98ab6-6bf6-4291-86cc-e53953edee40",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "bd5904b9-cffc-4453-9613-2bde23476cea",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "bc88a449-1fc8-4b88-aede-32c337688f52",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "7eba26c6-3c35-4b93-b59b-7c4c60ea9f32",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "5c0349f7-3d0c-47a6-b7fc-d5548f7a8df4",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "542da526-9e89-482b-8555-5e48e30ad635",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": true,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "96d6fe07-6ace-4862-9eff-bf4e7a767903",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "48260f30-adc0-4165-abf0-54d06136d510",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "REJECTED",
+      "expected_state": "REJECTED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "56f32691-80cc-464e-bdcc-767dd108a5dc",
+      "winners": 1,
+      "conflicts_409": 1,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "677f73d2-9833-4385-9052-42cd9f5c2379",
+      "winners": 1,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": "APPROVED",
+      "decision_audit_events": 1,
+      "D1": false,
+      "D2": true,
+      "D3": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "fc154409-f062-4c34-acbb-27a6e477d7cb",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "c9d6a69e-a4c1-4916-b790-3c8002b3d8b1",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition APPROVED -> REJECTED"
+        }
+      ]
+    },
+    {
+      "claim": "3c966f2e-3d27-410f-bff6-10913d935e45",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "APPROVED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> REJECTED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "5f9a1f7f-1a1e-408b-83dd-e8edfc2820ee",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 200,
+          "state": "APPROVED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "dde20037-8810-437b-a29c-1d56d1849436",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "REJECTED",
+      "expected_state": null,
+      "decision_audit_events": 2,
+      "D1": false,
+      "D2": false,
+      "D3": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": true,
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": true,
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition REJECTED -> APPROVED"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "approve": false,
+          "status": 200,
+          "state": "REJECTED",
+          "error": null
+        }
+      ]
+    }
+  ],
+  "payments": [
+    {
+      "claim": "527e33d9-c281-40fd-b5b7-68e521be8309",
+      "winners": 3,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 3,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "b5cabb13-bf5f-415e-ad85-981797ffca47",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "0ae1f68c-63d7-4bc4-a738-c10774dc7300",
+      "winners": 1,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "2cf24834-ec05-47c4-a88a-29902dea1825",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "0fcd44cb-128f-4233-b813-4b3c137766a1",
+      "winners": 1,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "6f41d109-6c7f-44b0-a9c2-535965f8ccab",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "47f7abaf-ccf7-4bc6-a03e-f987bb92ecbc",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "e5ced818-b313-4a1d-acb4-bdd2b0fa3fd3",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "e1a0202f-2f64-4825-b154-8510785aa0df",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "61911b4a-8e7a-48b8-99a2-64ac34d85a1e",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "de1c9f72-24e5-4e23-b8eb-31baf251503b",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "f5a98ab6-6bf6-4291-86cc-e53953edee40",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "bc88a449-1fc8-4b88-aede-32c337688f52",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "7eba26c6-3c35-4b93-b59b-7c4c60ea9f32",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "5c0349f7-3d0c-47a6-b7fc-d5548f7a8df4",
+      "winners": 2,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "542da526-9e89-482b-8555-5e48e30ad635",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "96d6fe07-6ace-4862-9eff-bf4e7a767903",
+      "winners": 3,
+      "conflicts_409": 1,
+      "final_state": "PAID",
+      "paid_audit_events": 3,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "56f32691-80cc-464e-bdcc-767dd108a5dc",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "677f73d2-9833-4385-9052-42cd9f5c2379",
+      "winners": 2,
+      "conflicts_409": 2,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        }
+      ]
+    },
+    {
+      "claim": "fc154409-f062-4c34-acbb-27a6e477d7cb",
+      "winners": 1,
+      "conflicts_409": 3,
+      "final_state": "PAID",
+      "paid_audit_events": 1,
+      "P1": true,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 409,
+          "state": null,
+          "error": "Illegal transition PAID -> PAID"
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "c9d6a69e-a4c1-4916-b790-3c8002b3d8b1",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        }
+      ]
+    },
+    {
+      "claim": "3c966f2e-3d27-410f-bff6-10913d935e45",
+      "winners": 2,
+      "conflicts_409": 0,
+      "final_state": "PAID",
+      "paid_audit_events": 2,
+      "P1": false,
+      "requests": [
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 403,
+          "state": null,
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18081",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 200,
+          "state": "PAID",
+          "error": null
+        },
+        {
+          "instance": "http://127.0.0.1:18082",
+          "status": 403,
+          "state": null,
+          "error": null
+        }
+      ]
+    }
+  ],
+  "extraction": [
+    {
+      "claim": "f517c18c-cf0d-4fd7-a19a-ebf64579e2f5",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "19133230-f7bb-4fdb-b59f-370a2cc53df8",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "6e4f1174-d651-4b5a-82f6-21194bbea200",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "5d607eb9-c163-4229-a069-5249e9ee052c",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "6b182508-11d5-4feb-a861-a5dabbae7d15",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "24ffdc71-d356-4122-9ef2-d2f604ee2fda",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "e7c4a4f9-193f-4dfe-9992-9365c3876ea6",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "345e926e-417c-4a02-af0d-80a82cab9604",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "92389557-5a51-40a3-9815-bf4c0ee7661e",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "571e7986-2daf-4986-8f3c-cec44c01ebdd",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "2601aa0b-fee9-4431-b4b4-cc91e3e228ce",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "00c5cc94-0100-4e79-9b6b-a138bc2833c2",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "0d0c3434-1ad6-47cb-9a69-c02b06835583",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "17086b26-44cd-49e4-a248-da554d8d59cd",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "9a47c997-ec72-4aed-9991-86ec6c386c40",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "bbda02b8-caaf-49d8-a44a-1c9741b0e370",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "79ec0e77-e201-4839-96d3-0812742ce139",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "3f43216c-d92b-419a-8be7-e80c67dfe1e9",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "0018d13d-55a9-439a-9526-8a902ebf5c93",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "16b73245-7f99-405c-9de5-fea758ba675a",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4e65f039-7f20-4278-9faf-4622c1e25ffb",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "5041ecc9-e7af-4d99-932b-35a3a740cb0b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "f5e85afb-e3ba-41a8-a173-767c37732b67",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "0d4cee8c-9438-456f-a879-7b411b032439",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "1843dd9e-acba-41e0-b563-eb7537573c3b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "42985e3f-50b6-4239-b663-ae13e32d29c3",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4c544998-9e3d-4842-946e-e5158bb523d5",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "442f1780-a514-4134-84f5-bcb268df0dbc",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "bdd8e654-5c97-4170-b43f-e9c0bb5670fc",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "a5982b50-7886-4e39-9a12-fe2c57463a6b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "3f4a8044-9f97-48b9-b067-6cb3fe069a34",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4d05fe07-512e-4420-86ce-1562edc1ffed",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "6ec26c69-027c-4c6c-9208-b58053d478ae",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "9f794c70-fe84-4ee5-8c23-21ef34f60d84",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4605a451-4ed6-4751-9520-be030c8cec75",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "181dc752-340b-4aea-bc76-faad672c27f8",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "2a08467c-6bc6-4dd0-ad7b-f37468432a99",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "c555a12d-075d-4261-a084-e14d65654028",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "19b5febf-e74f-4f04-8296-40a385ea2a1a",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4d6a6463-008a-4d28-8686-e7440ff7ed12",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "30983287-4c8d-4296-be4f-b35d31af2e70",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "bf58aa7a-d498-437c-a256-0796c1a90362",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "00565e16-67cc-4e75-b196-ddbdb5ce2d39",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "2e43e19a-c53b-4c68-8126-91c8a4f8e3b1",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "f5d50673-1843-4939-b0e2-73f3bf9ad3cb",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "47ba7382-bc85-476d-afaa-301ca4f099a9",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "f732207a-7a04-47e9-a817-1c9962ffa990",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "d35e8be6-3d78-4fb0-b5ff-82290c1028a5",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "f0a52865-446d-4b19-9159-28fd4cc17a07",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "e6fdcac1-c346-4c04-b193-3f522bc6e37b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "4b03d420-fb6f-4a36-943c-0043f79c3564",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "d6f0b0c3-3a87-4505-b39e-9e5139fa4033",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "c30b81c7-aadd-4117-9965-d821a2346f90",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "e0d74edc-9f9d-420d-a335-82187d70e895",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "56f87ee4-d110-4a46-aa7f-5d6d66604c24",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "24ab18a5-2f7a-4e5a-82cf-88d4dffbc263",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "762e562e-f140-4a77-b032-68a8bdaee08b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "7554d844-9104-462d-955f-c0676daabdae",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "8f793ae6-a777-42be-aae5-05ba24c8a4b4",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    },
+    {
+      "claim": "bdd45658-2e9c-4012-8ca2-3fe40f35433b",
+      "state": "IN_REVIEW",
+      "extracted_audit_events": 1,
+      "E1": true
+    }
+  ],
+  "async_errors": []
+}
