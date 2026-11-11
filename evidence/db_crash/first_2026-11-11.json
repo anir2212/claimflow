@@ -1,0 +1,1528 @@
+{
+  "protocol": "docs/DB_CRASH_PROTOCOL.md",
+  "protocol_sha256": "49e4cdc1528488822484686bbf7740656b7d8ed8a9993fe60f27eed4831f2e38",
+  "project_commit": "808f162fcf471590f335eb06c21fb5b01742bb93",
+  "started_at": "2026-11-11T11:15:56.933561+08:00",
+  "jar_sha256": "864ed0a1413e8a460654ebce0570df60a2be26fa143897c3e56506797e40380b",
+  "checks": {
+    "D1": {
+      "ok": true,
+      "sql": {
+        "ok": true,
+        "problems": [],
+        "claims": 20,
+        "jobs": 20,
+        "audit_events": 20,
+        "flyway_unsuccessful": 0
+      }
+    },
+    "D2": {
+      "ok": true
+    },
+    "D3": {
+      "ok": true,
+      "sql": {
+        "ok": true,
+        "problems": [],
+        "claims": 20,
+        "jobs": 20,
+        "audit_events": 20,
+        "flyway_unsuccessful": 0
+      }
+    },
+    "D4": {
+      "ok": true,
+      "sql": {
+        "ok": true,
+        "problems": [],
+        "claims": 20,
+        "jobs": 20,
+        "audit_events": 40,
+        "flyway_unsuccessful": 0
+      }
+    },
+    "D5": {
+      "ok": true
+    },
+    "D6": {
+      "ok": true,
+      "ports_free": true,
+      "datadir_deleted": true
+    }
+  },
+  "events": {
+    "api_initial_health": {
+      "up": true,
+      "seconds": 4.67
+    },
+    "api_states_before": {
+      "76b26a69-001d-4126-aef6-d1126d7b76ec": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "1956a25d-5e72-4530-8aeb-7cf005678528": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "997df9c9-c516-48b4-8b73-c77f903ef854": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "26fc08db-0241-4432-af44-952d4c6e7f12": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "779b2de3-3376-40ff-a869-f5055e8e21c2": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "6bc50f7c-bb43-4495-a419-f346ea9d2a6b": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "fae162ae-b029-472d-8cdc-806b3174ab0e": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "56255e9a-343e-43fd-92b9-1418e0870b05": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "711a961f-c50a-4221-81ff-b941150c4610": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "b97f7340-33b9-4b4b-8da4-4655938730d4": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7e57c24f-934b-4141-8676-45af2118bcbf": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "54bcd019-c794-4cd3-8279-835073dc8504": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "0d908891-7eb2-4a72-86f2-c511c843f65a": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "1ba46054-c152-44af-b960-ae2d370a265c": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7b05ba61-e872-432d-9943-ae8e63aac0d9": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "0aa0ff7a-89eb-46f4-a636-edcff4079aed": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7d56c578-5e8e-403d-9208-054e694d0e47": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "b04a0397-ccea-4403-af21-fe4f5d9c6622": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "363261f7-2eea-4b28-814b-e61db7341e00": {
+        "status": 200,
+        "state": "SUBMITTED"
+      }
+    },
+    "mysql_kill": {
+      "signal": "SIGKILL",
+      "pid": 34491,
+      "exited": true
+    },
+    "api_down_seconds": 0.01,
+    "mysql_restart_seconds": 1.56,
+    "same_api_up_seconds": 0.02,
+    "api_states_after_db_restart": {
+      "76b26a69-001d-4126-aef6-d1126d7b76ec": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "1956a25d-5e72-4530-8aeb-7cf005678528": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "997df9c9-c516-48b4-8b73-c77f903ef854": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "26fc08db-0241-4432-af44-952d4c6e7f12": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "779b2de3-3376-40ff-a869-f5055e8e21c2": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "6bc50f7c-bb43-4495-a419-f346ea9d2a6b": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "fae162ae-b029-472d-8cdc-806b3174ab0e": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "56255e9a-343e-43fd-92b9-1418e0870b05": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "711a961f-c50a-4221-81ff-b941150c4610": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "b97f7340-33b9-4b4b-8da4-4655938730d4": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7e57c24f-934b-4141-8676-45af2118bcbf": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "54bcd019-c794-4cd3-8279-835073dc8504": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "0d908891-7eb2-4a72-86f2-c511c843f65a": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "1ba46054-c152-44af-b960-ae2d370a265c": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7b05ba61-e872-432d-9943-ae8e63aac0d9": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "0aa0ff7a-89eb-46f4-a636-edcff4079aed": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "7d56c578-5e8e-403d-9208-054e694d0e47": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "b04a0397-ccea-4403-af21-fe4f5d9c6622": {
+        "status": 200,
+        "state": "SUBMITTED"
+      },
+      "363261f7-2eea-4b28-814b-e61db7341e00": {
+        "status": 200,
+        "state": "SUBMITTED"
+      }
+    },
+    "new_api_health": {
+      "up": true,
+      "seconds": 4.13
+    },
+    "jobs_done_seconds": 1.64,
+    "api_states_final": {
+      "76b26a69-001d-4126-aef6-d1126d7b76ec": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "1956a25d-5e72-4530-8aeb-7cf005678528": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "997df9c9-c516-48b4-8b73-c77f903ef854": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "26fc08db-0241-4432-af44-952d4c6e7f12": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "779b2de3-3376-40ff-a869-f5055e8e21c2": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "6bc50f7c-bb43-4495-a419-f346ea9d2a6b": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "fae162ae-b029-472d-8cdc-806b3174ab0e": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "56255e9a-343e-43fd-92b9-1418e0870b05": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "711a961f-c50a-4221-81ff-b941150c4610": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "b97f7340-33b9-4b4b-8da4-4655938730d4": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "7e57c24f-934b-4141-8676-45af2118bcbf": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "54bcd019-c794-4cd3-8279-835073dc8504": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "0d908891-7eb2-4a72-86f2-c511c843f65a": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "1ba46054-c152-44af-b960-ae2d370a265c": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "7b05ba61-e872-432d-9943-ae8e63aac0d9": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "0aa0ff7a-89eb-46f4-a636-edcff4079aed": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "7d56c578-5e8e-403d-9208-054e694d0e47": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "b04a0397-ccea-4403-af21-fe4f5d9c6622": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      },
+      "363261f7-2eea-4b28-814b-e61db7341e00": {
+        "status": 200,
+        "state": "IN_REVIEW"
+      }
+    },
+    "replay": {
+      "status": 200,
+      "returned_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+      "original_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+      "claim_rows_after_replay": 20
+    }
+  },
+  "snapshots": {
+    "before": {
+      "claims": [
+        {
+          "id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-16"
+        },
+        {
+          "id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-12"
+        },
+        {
+          "id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-1"
+        },
+        {
+          "id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-13"
+        },
+        {
+          "id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-3"
+        },
+        {
+          "id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-19"
+        },
+        {
+          "id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-11"
+        },
+        {
+          "id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-7"
+        },
+        {
+          "id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-5"
+        },
+        {
+          "id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-8"
+        },
+        {
+          "id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-0"
+        },
+        {
+          "id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-4"
+        },
+        {
+          "id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-15"
+        },
+        {
+          "id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-17"
+        },
+        {
+          "id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-10"
+        },
+        {
+          "id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-2"
+        },
+        {
+          "id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-18"
+        },
+        {
+          "id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-9"
+        },
+        {
+          "id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-14"
+        },
+        {
+          "id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-6"
+        }
+      ],
+      "jobs": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "status": "PENDING",
+          "attempts": "0"
+        }
+      ],
+      "audit": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "action": "SUBMITTED"
+        }
+      ],
+      "flyway_unsuccessful": 0
+    },
+    "after_db_restart": {
+      "claims": [
+        {
+          "id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-16"
+        },
+        {
+          "id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-12"
+        },
+        {
+          "id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-1"
+        },
+        {
+          "id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-13"
+        },
+        {
+          "id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-3"
+        },
+        {
+          "id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-19"
+        },
+        {
+          "id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-11"
+        },
+        {
+          "id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-7"
+        },
+        {
+          "id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-5"
+        },
+        {
+          "id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-8"
+        },
+        {
+          "id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-0"
+        },
+        {
+          "id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-4"
+        },
+        {
+          "id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-15"
+        },
+        {
+          "id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-17"
+        },
+        {
+          "id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-10"
+        },
+        {
+          "id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-2"
+        },
+        {
+          "id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-18"
+        },
+        {
+          "id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-9"
+        },
+        {
+          "id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-14"
+        },
+        {
+          "id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "state": "SUBMITTED",
+          "key": "db-crash-25f0b3532383-6"
+        }
+      ],
+      "jobs": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "status": "PENDING",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "status": "PENDING",
+          "attempts": "0"
+        }
+      ],
+      "audit": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "action": "SUBMITTED"
+        }
+      ],
+      "flyway_unsuccessful": 0
+    },
+    "final": {
+      "claims": [
+        {
+          "id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-16"
+        },
+        {
+          "id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-12"
+        },
+        {
+          "id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-1"
+        },
+        {
+          "id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-13"
+        },
+        {
+          "id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-3"
+        },
+        {
+          "id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-19"
+        },
+        {
+          "id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-11"
+        },
+        {
+          "id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-7"
+        },
+        {
+          "id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-5"
+        },
+        {
+          "id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-8"
+        },
+        {
+          "id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-0"
+        },
+        {
+          "id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-4"
+        },
+        {
+          "id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-15"
+        },
+        {
+          "id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-17"
+        },
+        {
+          "id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-10"
+        },
+        {
+          "id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-2"
+        },
+        {
+          "id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-18"
+        },
+        {
+          "id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-9"
+        },
+        {
+          "id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-14"
+        },
+        {
+          "id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "state": "IN_REVIEW",
+          "key": "db-crash-25f0b3532383-6"
+        }
+      ],
+      "jobs": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "status": "DONE",
+          "attempts": "0"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "status": "DONE",
+          "attempts": "0"
+        }
+      ],
+      "audit": [
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "0d908891-7eb2-4a72-86f2-c511c843f65a",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "1956a25d-5e72-4530-8aeb-7cf005678528",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "1ba46054-c152-44af-b960-ae2d370a265c",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "26fc08db-0241-4432-af44-952d4c6e7f12",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "363261f7-2eea-4b28-814b-e61db7341e00",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "54bcd019-c794-4cd3-8279-835073dc8504",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "56255e9a-343e-43fd-92b9-1418e0870b05",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "711a961f-c50a-4221-81ff-b941150c4610",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "76b26a69-001d-4126-aef6-d1126d7b76ec",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "779b2de3-3376-40ff-a869-f5055e8e21c2",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "7b05ba61-e872-432d-9943-ae8e63aac0d9",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "7d56c578-5e8e-403d-9208-054e694d0e47",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "7e57c24f-934b-4141-8676-45af2118bcbf",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "997df9c9-c516-48b4-8b73-c77f903ef854",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "b04a0397-ccea-4403-af21-fe4f5d9c6622",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "b97f7340-33b9-4b4b-8da4-4655938730d4",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e",
+          "action": "SUBMITTED"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "action": "EXTRACTED"
+        },
+        {
+          "claim_id": "fae162ae-b029-472d-8cdc-806b3174ab0e",
+          "action": "SUBMITTED"
+        }
+      ],
+      "flyway_unsuccessful": 0
+    }
+  },
+  "invalid_reasons": [],
+  "settings_before": {
+    "version": "8.4.0",
+    "innodb_flush_log_at_trx_commit": 1,
+    "sync_binlog": 1,
+    "innodb_buffer_pool_size": 134217728,
+    "max_connections": 151,
+    "log_bin": "1",
+    "port": 13317,
+    "command": [
+      "/opt/anaconda3/bin/mysqld",
+      "--no-defaults",
+      "--basedir=/opt/anaconda3",
+      "--lc-messages-dir=/opt/anaconda3/share/mysql",
+      "--datadir=<project-root>/target/db_crash_20261111/data",
+      "--port=13317",
+      "--socket=/private/tmp/claimflow-crash-34464.sock",
+      "--bind-address=127.0.0.1",
+      "--mysqlx=0",
+      "--innodb-buffer-pool-size=134217728",
+      "--max-connections=151",
+      "--log-error=<project-root>/target/db_crash_20261111/mysqld.err",
+      "--pid-file=<project-root>/target/db_crash_20261111/mysqld.pid",
+      "--secure-file-priv=<project-root>/target/db_crash_20261111"
+    ]
+  },
+  "submissions": [
+    {
+      "key": "db-crash-25f0b3532383-0",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 0\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "76b26a69-001d-4126-aef6-d1126d7b76ec"
+    },
+    {
+      "key": "db-crash-25f0b3532383-1",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 1\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "1956a25d-5e72-4530-8aeb-7cf005678528"
+    },
+    {
+      "key": "db-crash-25f0b3532383-2",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 2\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "997df9c9-c516-48b4-8b73-c77f903ef854"
+    },
+    {
+      "key": "db-crash-25f0b3532383-3",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 3\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "26fc08db-0241-4432-af44-952d4c6e7f12"
+    },
+    {
+      "key": "db-crash-25f0b3532383-4",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 4\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "779b2de3-3376-40ff-a869-f5055e8e21c2"
+    },
+    {
+      "key": "db-crash-25f0b3532383-5",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 5\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "6bc50f7c-bb43-4495-a419-f346ea9d2a6b"
+    },
+    {
+      "key": "db-crash-25f0b3532383-6",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 6\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "fae162ae-b029-472d-8cdc-806b3174ab0e"
+    },
+    {
+      "key": "db-crash-25f0b3532383-7",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 7\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "56255e9a-343e-43fd-92b9-1418e0870b05"
+    },
+    {
+      "key": "db-crash-25f0b3532383-8",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 8\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "711a961f-c50a-4221-81ff-b941150c4610"
+    },
+    {
+      "key": "db-crash-25f0b3532383-9",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 9\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "b97f7340-33b9-4b4b-8da4-4655938730d4"
+    },
+    {
+      "key": "db-crash-25f0b3532383-10",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 10\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "7e57c24f-934b-4141-8676-45af2118bcbf"
+    },
+    {
+      "key": "db-crash-25f0b3532383-11",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 11\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "54bcd019-c794-4cd3-8279-835073dc8504"
+    },
+    {
+      "key": "db-crash-25f0b3532383-12",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 12\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "0d908891-7eb2-4a72-86f2-c511c843f65a"
+    },
+    {
+      "key": "db-crash-25f0b3532383-13",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 13\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "1ba46054-c152-44af-b960-ae2d370a265c"
+    },
+    {
+      "key": "db-crash-25f0b3532383-14",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 14\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "caddc5ca-9ab7-4d9c-8bf2-f2f665fc773e"
+    },
+    {
+      "key": "db-crash-25f0b3532383-15",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 15\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "7b05ba61-e872-432d-9943-ae8e63aac0d9"
+    },
+    {
+      "key": "db-crash-25f0b3532383-16",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 16\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "0aa0ff7a-89eb-46f4-a636-edcff4079aed"
+    },
+    {
+      "key": "db-crash-25f0b3532383-17",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 17\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "7d56c578-5e8e-403d-9208-054e694d0e47"
+    },
+    {
+      "key": "db-crash-25f0b3532383-18",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 18\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "b04a0397-ccea-4403-af21-fe4f5d9c6622"
+    },
+    {
+      "key": "db-crash-25f0b3532383-19",
+      "body": {
+        "category": "meal",
+        "amountCents": 1850,
+        "receiptText": "Merchant: Crash Check 25f0b3532383 19\nDate: 2026-11-11\nTotal: SGD 18.50"
+      },
+      "status": 200,
+      "id": "363261f7-2eea-4b28-814b-e61db7341e00"
+    }
+  ],
+  "settings_after": {
+    "version": "8.4.0",
+    "innodb_flush_log_at_trx_commit": 1,
+    "sync_binlog": 1,
+    "innodb_buffer_pool_size": 134217728,
+    "max_connections": 151,
+    "log_bin": "1",
+    "port": 13317,
+    "command": [
+      "/opt/anaconda3/bin/mysqld",
+      "--no-defaults",
+      "--basedir=/opt/anaconda3",
+      "--lc-messages-dir=/opt/anaconda3/share/mysql",
+      "--datadir=<project-root>/target/db_crash_20261111/data",
+      "--port=13317",
+      "--socket=/private/tmp/claimflow-crash-34464.sock",
+      "--bind-address=127.0.0.1",
+      "--mysqlx=0",
+      "--innodb-buffer-pool-size=134217728",
+      "--max-connections=151",
+      "--log-error=<project-root>/target/db_crash_20261111/mysqld.err",
+      "--pid-file=<project-root>/target/db_crash_20261111/mysqld.pid",
+      "--secure-file-priv=<project-root>/target/db_crash_20261111"
+    ]
+  },
+  "finished_at": "2026-11-11T11:16:13.771492+08:00",
+  "verdict": "pass"
+}

@@ -7,3 +7,4 @@
 /frontend/*.tsbuildinfo
 /frontend/.playwright-results/
 /frontend/playwright-report/
+__pycache__/

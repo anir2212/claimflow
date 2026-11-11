@@ -1,0 +1,5767 @@
+{
+ "label": "after",
+ "startedAt": "2026-11-06T09:50:11.979Z",
+ "tool": {
+  "axeCore": "4.13.0",
+  "tags": [
+   "wcag2a",
+   "wcag2aa",
+   "wcag21a",
+   "wcag21aa",
+   "wcag22aa",
+   "best-practice"
+  ],
+  "chrome": "156.0.8078.80"
+ },
+ "viewports": {
+  "WIDE": {
+   "width": 1280,
+   "height": 900
+  },
+  "NARROW": {
+   "width": 390,
+   "height": 844
+  },
+  "REFLOW": {
+   "width": 320,
+   "height": 800
+  }
+ },
+ "api": "target/claimflow-0.1.0.jar, default profile, in-memory H2",
+ "console": "production bundle via vite preview",
+ "scans": [
+  {
+   "id": "login",
+   "description": "Signed-out page as loaded",
+   "focus": {
+    "onBody": true
+   },
+   "title": "Sign in · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Open local demo",
+     "level": 2
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Sign in"
+    },
+    {
+     "role": "combobox",
+     "name": "Role"
+    },
+    {
+     "role": "textbox",
+     "name": "Password",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "login-error",
+   "description": "Wrong password: real 401 from the API",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "password",
+    "id": null,
+    "name": "Password",
+    "insideClaim": false
+   },
+   "title": "Sign in · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "That password is not right for this role. Check it and try again.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Open local demo",
+     "level": 2
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Sign in"
+    },
+    {
+     "role": "combobox",
+     "name": "Role"
+    },
+    {
+     "role": "textbox",
+     "name": "Password",
+     "description": "That password is not right for this role. Check it and try again.",
+     "invalid": "true",
+     "required": true,
+     "focused": true
+    }
+   ],
+   "wide": {
+    "passes": 38,
+    "inapplicable": 52,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 38,
+    "inapplicable": 52,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "manager-empty",
+   "description": "Manager view with an empty queue",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "policy-answer",
+   "description": "Policy desk answer with a cited clause",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Ask",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "polite",
+     "text": "A meal claim cannot exceed SGD 60.00. [P-2]Cited: P-2",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Ask",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "policy-abstain",
+   "description": "Policy desk abstains with no supporting clause",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Ask",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "polite",
+     "text": "I cannot answer from the policy.No supporting clause",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Ask",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "after-sign-out",
+   "description": "Signed-out page straight after signing out",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Open local demo",
+    "insideClaim": false
+   },
+   "title": "Sign in · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Open local demo",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Sign in"
+    },
+    {
+     "role": "combobox",
+     "name": "Role"
+    },
+    {
+     "role": "textbox",
+     "name": "Password",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "finance-empty",
+   "description": "Finance view with nothing to pay and a zero summary",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Ready to pay",
+    "insideClaim": false
+   },
+   "title": "Ready to pay · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Ready to pay",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 35,
+    "inapplicable": 55,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "employee-empty",
+   "description": "Employee view: empty list and new-claim form, straight after signing in",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "My claims",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "submit-native-validation",
+   "description": "Submit pressed with no amount: browser validation",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "number",
+    "id": null,
+    "name": "Amount (SGD)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "alert",
+     "name": "Please fill in this field.",
+     "live": "assertive"
+    },
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true,
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-wrong-type",
+   "description": "Receipt upload: text file refused in the browser",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "file",
+    "id": null,
+    "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Choose a PNG or JPEG image.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "Choose a PNG or JPEG image. This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "invalid": "true",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-bad-bytes",
+   "description": "Receipt upload: declared PNG whose bytes are not an image",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "file",
+    "id": null,
+    "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "This file is not a PNG or JPEG image.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This file is not a PNG or JPEG image. This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "invalid": "true",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-empty",
+   "description": "Receipt upload: empty file",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "file",
+    "id": null,
+    "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "The receipt image is empty.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "The receipt image is empty. This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "invalid": "true",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-oversize",
+   "description": "Receipt upload: image over the 5 MB limit",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "file",
+    "id": null,
+    "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "The receipt image is 6.0 MB; the limit is 5.0 MB.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "The receipt image is 6.0 MB; the limit is 5.0 MB. This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "invalid": "true",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-attached",
+   "description": "Receipt upload: valid image attached, transcription disabled",
+   "focus": {
+    "onBody": false,
+    "tag": "input",
+    "type": "file",
+    "id": null,
+    "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Image attached. It will be sent instead of the transcription.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Remove image"
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-in-progress",
+   "description": "Upload in progress: the browser holds the request during the scan",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Uploading the receipt image.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Remove image",
+     "disabled": true
+    },
+    {
+     "role": "progressbar",
+     "name": "Upload progress"
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "disabled": true,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription.",
+     "disabled": true
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "upload-refused-503",
+   "description": "Real 503 from the API: no OCR engine, no claim created",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Image OCR is not configured on this server. No claim was created; submit a typed transcription instead.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Remove image"
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "Image OCR is not configured on this server. No claim was created; submit a typed transcription instead. This server has no OCR engine configured. An image upload will be refused and no claim created; ",
+     "invalid": "true"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "submit-server-400",
+   "description": "Real 400 from the API: transcription over 10000 characters",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Async receipt text is required (max 10000 characters)",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription",
+     "description": "Async receipt text is required (max 10000 characters)",
+     "invalid": "true"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "submit-success",
+   "description": "Typed receipt accepted: success notice",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Claim queued for receipt validation.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "employee-one-claim",
+   "description": "Employee list after the worker validated the receipt",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "manager-queue",
+   "description": "Manager queue with review cards and receipt-correction forms, straight after signing in",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 21.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "correction-error",
+   "description": "Real 400 from the API: unreadable correction",
+   "focus": {
+    "onBody": false,
+    "tag": "textarea",
+    "type": null,
+    "id": "correction-63c8c4f5-3c72-4174-914d-a17982ee2575",
+    "name": "Corrected receipt transcription",
+    "insideClaim": true
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Receipt needs human check: merchant, date and SGD total required",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "Receipt needs human check: merchant, date and SGD total required meal",
+     "invalid": "true",
+     "focused": true
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "correction-success",
+   "description": "Correction accepted: success notice",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Receipt checked and claim sent to review.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "review-eligible",
+   "description": "Policy review panel: eligible",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Review policy\nclaim: Cafe AA after, SGD 11.00",
+    "insideClaim": true
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "polite",
+     "text": "Eligible under hard rulesNo hard-rule violation.Clauses: none",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "review-blocked",
+   "description": "Policy review panel: hard rule blocks the claim",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Review policy\nclaim: Cafe BB after, SGD 75.00",
+    "insideClaim": true
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "polite",
+     "text": "Policy blockMeal cap exceededClauses: P-2",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "decision-blocked-409",
+   "description": "Real 409 from the API: approval blocked by policy",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Approve\nclaim: Cafe BB after, SGD 75.00",
+    "insideClaim": true
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Hard policy rule blocks approval",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "decision-approved",
+   "description": "Claim approved: the card leaves the queue",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Claim approved.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe DD after, SGD 13.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "decision-rejected",
+   "description": "Claim rejected: the card leaves the queue",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Claim rejected.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "decision-stale-409",
+   "description": "Real 409 from the API: another session decided this claim first",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Approval queue",
+    "insideClaim": false
+   },
+   "title": "Approval queue · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "List refreshed: 6 claims in this view.",
+     "regionPreexisted": true
+    },
+    {
+     "role": "alert",
+     "text": "This claim was already changed in another session. The list has been refreshed.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Approval queue",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Complete receipt check claim: meal, SGD 22.00",
+     "disabled": true
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Audit Deli after, SGD 12.50"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe AA after, SGD 11.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe BB after, SGD 75.00"
+    },
+    {
+     "role": "button",
+     "name": "Review policy claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Approve claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Reject claim: Cafe II after, SGD 21.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Corrected receipt transcription",
+     "description": "meal"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "finance-list",
+   "description": "Finance list with approved claims and a populated summary, straight after signing in",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Ready to pay",
+    "insideClaim": false
+   },
+   "title": "Ready to pay · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Ready to pay",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Claim summary",
+     "level": 3
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe FF after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe GG after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe FF after, SGD 15.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe GG after, SGD 16.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe HH after, SGD 17.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe KK after, SGD 18.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "payment-success",
+   "description": "Claim paid: the card leaves the list",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Ready to pay",
+    "insideClaim": false
+   },
+   "title": "Ready to pay · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "Claim marked paid.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Ready to pay",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Claim summary",
+     "level": 3
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe GG after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe GG after, SGD 16.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe HH after, SGD 17.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe KK after, SGD 18.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "payment-stale-409",
+   "description": "Real 409 from the API: already paid in another session",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "Ready to pay",
+    "insideClaim": false
+   },
+   "title": "Ready to pay · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "status",
+     "text": "List refreshed: 5 claims in this view.",
+     "regionPreexisted": true
+    },
+    {
+     "role": "alert",
+     "text": "This claim was already changed in another session. The list has been refreshed.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Ready to pay",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "heading",
+     "name": "Claim summary",
+     "level": 3
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe CC after, SGD 12.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe EE after, SGD 14.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe HH after, SGD 17.00"
+    },
+    {
+     "role": "button",
+     "name": "Mark paid claim: Cafe KK after, SGD 18.00"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 36,
+    "inapplicable": 54,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "employee-all-states",
+   "description": "Employee list with IN REVIEW, NEEDS HUMAN CHECK, APPROVED, REJECTED and PAID badges",
+   "focus": {
+    "onBody": false,
+    "tag": "h2",
+    "type": null,
+    "id": null,
+    "name": "My claims",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2,
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe MM after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe LL after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe GG after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe FF after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "api-down-refresh",
+   "description": "API process stopped: Refresh fails",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Refresh",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Cannot reach the ClaimFlow API. Check that it is running, then try again.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh",
+     "focused": true
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "article",
+     "name": "Keyboard Cafe after"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe MM after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe LL after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe GG after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe FF after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim"
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "api-down-submit",
+   "description": "API process stopped: submitting a claim fails",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Submit claim",
+    "insideClaim": false
+   },
+   "title": "My claims · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Cannot reach the ClaimFlow API. Check that it is running, then try again.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "complementary",
+     "name": "Policy desk"
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "button",
+     "name": "Sign out"
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "My claims",
+     "level": 2
+    },
+    {
+     "role": "button",
+     "name": "Refresh"
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "article",
+     "name": "Keyboard Cafe after"
+    },
+    {
+     "role": "article",
+     "name": "meal"
+    },
+    {
+     "role": "article",
+     "name": "Cafe II after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe MM after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe LL after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe KK after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe HH after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe GG after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe FF after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe EE after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe DD after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe CC after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe BB after"
+    },
+    {
+     "role": "article",
+     "name": "Cafe AA after"
+    },
+    {
+     "role": "article",
+     "name": "Audit Deli after"
+    },
+    {
+     "role": "heading",
+     "name": "Ask a policy question",
+     "level": 3
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "New claim",
+     "level": 3
+    },
+    {
+     "role": "button",
+     "name": "Submit claim",
+     "focused": true
+    },
+    {
+     "role": "button",
+     "name": "Ask"
+    },
+    {
+     "role": "combobox",
+     "name": "Category"
+    },
+    {
+     "role": "spinbutton",
+     "name": "Amount (SGD)",
+     "required": true
+    },
+    {
+     "role": "textbox",
+     "name": "Receipt transcription"
+    },
+    {
+     "role": "button",
+     "name": "Load a .txt receipt"
+    },
+    {
+     "role": "button",
+     "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+     "description": "This server has no OCR engine configured. An image upload will be refused and no claim created; use a typed transcription."
+    },
+    {
+     "role": "textbox",
+     "name": "Question",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 37,
+    "inapplicable": 53,
+    "violations": [],
+    "incomplete": []
+   }
+  },
+  {
+   "id": "api-down-login",
+   "description": "API process stopped: signing in fails",
+   "focus": {
+    "onBody": false,
+    "tag": "button",
+    "type": null,
+    "id": null,
+    "name": "Sign in",
+    "insideClaim": false
+   },
+   "title": "Sign in · ClaimFlow",
+   "liveEvents": [
+    {
+     "role": "alert",
+     "text": "Cannot reach the ClaimFlow API. Check that it is running, then try again.",
+     "regionPreexisted": true
+    }
+   ],
+   "reflowOverflowPx320": 0,
+   "accessibilityTree": [
+    {
+     "role": "banner",
+     "name": ""
+    },
+    {
+     "role": "main",
+     "name": ""
+    },
+    {
+     "role": "contentinfo",
+     "name": ""
+    },
+    {
+     "role": "heading",
+     "name": "ClaimFlow",
+     "level": 1
+    },
+    {
+     "role": "alert",
+     "name": "",
+     "live": "assertive"
+    },
+    {
+     "role": "status",
+     "name": "",
+     "live": "polite"
+    },
+    {
+     "role": "heading",
+     "name": "Open local demo",
+     "level": 2
+    },
+    {
+     "role": "form",
+     "name": ""
+    },
+    {
+     "role": "button",
+     "name": "Sign in",
+     "focused": true
+    },
+    {
+     "role": "combobox",
+     "name": "Role"
+    },
+    {
+     "role": "textbox",
+     "name": "Password",
+     "required": true
+    }
+   ],
+   "wide": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   },
+   "narrow": {
+    "passes": 32,
+    "inapplicable": 58,
+    "violations": [],
+    "incomplete": []
+   }
+  }
+ ],
+ "unreached": [],
+ "keyboard": {
+  "pollWhileTyping": {
+   "focusAfterPoll": {
+    "onBody": false,
+    "tag": "textarea",
+    "type": null,
+    "id": "correction-63c8c4f5-3c72-4174-914d-a17982ee2575",
+    "name": "Corrected receipt transcription",
+    "insideClaim": true
+   },
+   "valueKept": true
+  },
+  "fileChooserOpensWithSpace": true,
+  "tabCycles": [
+   {
+    "view": "employee, populated",
+    "stops": 10,
+    "tabPresses": 12,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {},
+    "stopList": [
+     {
+      "role": "button",
+      "name": "Submit claim",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "textbox",
+      "name": "Question",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Ask",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Sign out",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Refresh",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "combobox",
+      "name": "Category",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "spinbutton",
+      "name": "Amount (SGD)",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "textbox",
+      "name": "Receipt transcription",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Load a .txt receipt",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Receipt image (PNG or JPEG, up to 5.0 MB)",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     }
+    ]
+   },
+   {
+    "view": "signed out",
+    "stops": 3,
+    "tabPresses": 4,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {},
+    "stopList": [
+     {
+      "role": "combobox",
+      "name": "Role",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "textbox",
+      "name": "Password",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Sign in",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     }
+    ]
+   },
+   {
+    "view": "manager, populated",
+    "stops": 18,
+    "tabPresses": 20,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {},
+    "stopList": [
+     {
+      "role": "button",
+      "name": "Refresh",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "textbox",
+      "name": "Corrected receipt transcription",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Complete receipt check claim: meal, SGD 22.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Review policy claim: Audit Deli after, SGD 12.50",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Approve claim: Audit Deli after, SGD 12.50",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Reject claim: Audit Deli after, SGD 12.50",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Review policy claim: Cafe AA after, SGD 11.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Approve claim: Cafe AA after, SGD 11.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Reject claim: Cafe AA after, SGD 11.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Review policy claim: Cafe BB after, SGD 75.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Approve claim: Cafe BB after, SGD 75.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Reject claim: Cafe BB after, SGD 75.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Review policy claim: Cafe II after, SGD 21.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Approve claim: Cafe II after, SGD 21.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Reject claim: Cafe II after, SGD 21.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "textbox",
+      "name": "Question",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Ask",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Sign out",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     }
+    ]
+   },
+   {
+    "view": "finance, populated",
+    "stops": 8,
+    "tabPresses": 9,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {},
+    "stopList": [
+     {
+      "role": "button",
+      "name": "Refresh",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Mark paid claim: Cafe CC after, SGD 12.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Mark paid claim: Cafe EE after, SGD 14.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Mark paid claim: Cafe HH after, SGD 17.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "button",
+      "name": "Mark paid claim: Cafe KK after, SGD 18.00",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": true
+     },
+     {
+      "role": "textbox",
+      "name": "Question",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Ask",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     },
+     {
+      "role": "button",
+      "name": "Sign out",
+      "outline": "solid 3px rgb(11, 87, 164)",
+      "insideClaim": false
+     }
+    ]
+   }
+  ],
+  "flow": {
+   "completed": true,
+   "nonTypingKeys": 83,
+   "typedCharacters": 108,
+   "managerSelected": "manager",
+   "financeSelected": "finance",
+   "steps": [
+    {
+     "step": "employee signed in",
+     "keysSoFar": 3,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "My claims",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "claim submitted",
+     "keysSoFar": 11,
+     "focus": {
+      "onBody": false,
+      "tag": "button",
+      "type": null,
+      "id": null,
+      "name": "Submit claim",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "employee signed out",
+     "keysSoFar": 16,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "Open local demo",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "manager signed in",
+     "keysSoFar": 20,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "Approval queue",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "policy reviewed",
+     "keysSoFar": 37,
+     "focus": {
+      "onBody": false,
+      "tag": "button",
+      "type": null,
+      "id": null,
+      "name": "Review policy\nclaim: Keyboard Cafe after, SGD 14.25",
+      "insideClaim": true
+     }
+    },
+    {
+     "step": "claim approved",
+     "keysSoFar": 39,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "Approval queue",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "finance signed in",
+     "keysSoFar": 62,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "Ready to pay",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "claim paid",
+     "keysSoFar": 69,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "Ready to pay",
+      "insideClaim": false
+     }
+    },
+    {
+     "step": "employee sees PAID",
+     "keysSoFar": 83,
+     "focus": {
+      "onBody": false,
+      "tag": "h2",
+      "type": null,
+      "id": null,
+      "name": "My claims",
+      "insideClaim": false
+     }
+    }
+   ]
+  }
+ },
+ "limits": "Automated checks only. Not a conformance claim. No manual screen-reader pass has been done.",
+ "durationSeconds": 52,
+ "summary": {
+  "statesPlanned": 35,
+  "statesScanned": 35,
+  "statesNotReached": [],
+  "axeRuns": 70,
+  "axeRunsWithViolations": 0,
+  "axeRulesEvaluatedPerRun": 90,
+  "uniqueViolations": 0,
+  "uniqueRuleAndElementPatterns": 0,
+  "rulePatterns": [],
+  "wcagTaggedUniqueViolations": 0,
+  "bestPracticeOnlyUniqueViolations": 0,
+  "byImpact": {},
+  "byRule": {},
+  "incompleteNeedingAPerson": {},
+  "uploadErrorsLinkedToTheControl": {
+   "linked": 4,
+   "of": 4
+  },
+  "statesWithFocusOnBody": [
+   "login"
+  ],
+  "statesWithReflowOverflowAt320": [],
+  "pageTitles": [
+   "Sign in · ClaimFlow",
+   "Approval queue · ClaimFlow",
+   "Ready to pay · ClaimFlow",
+   "My claims · ClaimFlow"
+  ],
+  "liveMessages": 27,
+  "liveMessagesInPreexistingRegion": 27,
+  "tabCycles": [
+   {
+    "view": "employee, populated",
+    "stops": 10,
+    "tabPresses": 12,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {}
+   },
+   {
+    "view": "signed out",
+    "stops": 3,
+    "tabPresses": 4,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {}
+   },
+   {
+    "view": "manager, populated",
+    "stops": 18,
+    "tabPresses": 20,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {}
+   },
+   {
+    "view": "finance, populated",
+    "stops": 8,
+    "tabPresses": 9,
+    "returnedToFirstStop": true,
+    "emptyAccessibleNames": 0,
+    "noFocusStyle": 0,
+    "positiveTabIndex": 0,
+    "repeatedRoleAndName": {}
+   }
+  ],
+  "keyboardFlowCompleted": true
+ },
+ "uniqueViolations": []
+}
