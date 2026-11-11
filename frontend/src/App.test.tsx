@@ -60,7 +60,7 @@ it('lets a manager correct a receipt that needs human review', async () => {
   fireEvent.change(screen.getByLabelText('Corrected receipt transcription'), {
     target: { value: 'Merchant: Manual Cafe\nDate: 2026-10-04\nTotal: SGD 19.00' },
   });
-  fireEvent.click(screen.getByRole('button', { name: 'Complete receipt check' }));
+  fireEvent.click(screen.getByRole('button', { name: /^Complete receipt check/ }));
   await screen.findByText('Receipt checked and claim sent to review.');
   expect(fetchMock).toHaveBeenCalledWith(
     expect.stringContaining('/api/claims/manual-123456/receipt-check'),

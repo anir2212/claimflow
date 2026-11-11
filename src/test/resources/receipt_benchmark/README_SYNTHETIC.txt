@@ -5,4 +5,4 @@ used only to test the benchmark manifest validator, scorer and OCR adapter seam.
 it names are generated at test time by SyntheticReceiptImages (8x8 pixel patterns with no receipt
 content) and are never committed. Any score computed from these rows is a harness check, not an
 OCR accuracy result. A real benchmark needs authorized, redacted receipt images and human-written
-labels supplied by a person; see RESULTS.md ("Receipt image seam and benchmark contract").
+labels supplied by a person; see docs/LEARNING_GUIDE.md "Image-receipt benchmark contract".

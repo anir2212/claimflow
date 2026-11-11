@@ -18,13 +18,20 @@ export interface Stats { claimCount: number; totalCents: number; byCategoryCents
 
 const base = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8080';
 
+/** A failed API call. Status 0 means the request never got an answer. */
+export class ApiError extends Error {
+  constructor(message: string, readonly status: number) { super(message); }
+}
+
 async function request<T>(path: string, token: string | null, options: RequestInit = {}): Promise<T> {
   const headers = new Headers(options.headers);
   if (token) headers.set('Authorization', `Bearer ${token}`);
   if (options.body) headers.set('Content-Type', 'application/json');
-  const response = await fetch(`${base}${path}`, { ...options, headers });
+  let response: Response;
+  try { response = await fetch(`${base}${path}`, { ...options, headers }); }
+  catch { throw new ApiError('Cannot reach the ClaimFlow API. Check that it is running, then try again.', 0); }
   const data = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(data.error || data.detail || `Request failed (${response.status})`);
+  if (!response.ok) throw new ApiError(data.error || data.detail || `Request failed (${response.status})`, response.status);
   return data as T;
 }
 
